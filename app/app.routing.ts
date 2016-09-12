@@ -1,21 +1,47 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { OverviewComponent } from "./overview/overview.component";
+import { ActionsComponent } from './actions/actions.component';
+import { PeopleComponent } from "./people/people.component";
+import { ProjectsComponent } from "./projects/projects.component";
+import { ReportingComponent } from "./reporting/reporting.component";
+import { TasksComponent } from "./tasks/tasks.component";
+import { PageNotFoundComponent } from "./pageNotFound.component";
+
 const appRoutes:Routes = [
     {
-        path: 'crisis-center',
-        component: CrisisCenterComponent
+        path: '',
+        component: OverviewComponent
     },
     {
-        path: 'heroes',
-        component: HeroListComponent,
-        data: {
-            title: 'Heroes List'
-        }
+        path: 'overview',
+        component: OverviewComponent
     },
     {
-        path: 'hero/:id',
-        component: HeroDetailComponent
+        path: 'tasks',
+        component: TasksComponent
+    },
+    {
+        path: 'actions',
+        component: ActionsComponent,
+        // data: {
+        //     title: 'Actions list'
+        // }
+    },
+    {
+        path: 'projects',
+        component: ProjectsComponent
+        
+        
+    },
+    {
+        path: 'people',
+        component: PeopleComponent
+    },
+    {
+        path: 'reporting',
+        component: ReportingComponent
     },
     {
         path: '**',

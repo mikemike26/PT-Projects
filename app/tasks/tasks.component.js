@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var TasksComponent = (function () {
+    function TasksComponent() {
     }
-    AppComponent = __decorate([
+    TasksComponent = __decorate([
         core_1.Component({
-            selector: 'app-main',
-            template: "\n      <h1>My First Angular 2 App</h1>\n      <nav>\n        <a href routerLink=\"/overview\" routerLinkActive=\"active\">Overview</a>\n        <a href routerLink=\"/tasks\" routerLinkActive=\"active\">Tasks</a>\n        <a href routerLink=\"/actions\" routerLinkActive=\"active\">Actions</a>\n        <a href routerLink=\"/projects\" routerLinkActive=\"active\">Projects</a>\n        <a href routerLink=\"/people\" routerLinkActive=\"active\">People</a>\n        <a href routerLink=\"/reporting\" routerLinkActive=\"active\">Reporting</a>\n      </nav>\n      <router-outlet></router-outlet>\n    "
+            selector: 'tasks',
+            template: "\n      <h1>Tasks</h1>\n    "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], TasksComponent);
+    return TasksComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.TasksComponent = TasksComponent;
+//# sourceMappingURL=tasks.component.js.map
