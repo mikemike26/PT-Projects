@@ -155,6 +155,11 @@ bower_components
 .bower-registry
 .bower-tmp
 
+### npm ###
+node_modules/
+
+### Typescript ###
+typings/
 
 ### Sass ###
 .sass-cache/
