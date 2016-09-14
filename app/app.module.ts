@@ -12,6 +12,7 @@ import {PageNotFoundComponent} from "./pageNotFound.component";
 import {UtilitiesModule} from "./_utilities/utilities.module";
 import {AppNav} from "./appNav.component";
 import {AppHeader} from "./appHeader.component";
+import {AppFooter} from "./appFooter.component";
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ import {AppHeader} from "./appHeader.component";
     declarations: [
         AppNav,
         AppHeader,
+        AppFooter,
         AppComponent,
         PageNotFoundComponent
     ],

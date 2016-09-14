@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var AppFooter = (function () {
+    function AppFooter() {
     }
-    AppComponent = __decorate([
+    AppFooter = __decorate([
         core_1.Component({
-            selector: 'app-main',
-            template: "\n      <app-header></app-header>\n      \n      <app-nav></app-nav>\n      <router-outlet></router-outlet>\n      \n      <app-footer></app-footer>\n      \n    ",
-            styles: []
+            selector: 'app-footer',
+            template: "\n      <footer>\n        <p>Market Technologies, Inc</p>\n      </footer>\n    ",
+            styles: ['p {text-align:right; margin: 1em; font-size: 0.5rem}']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AppFooter);
+    return AppFooter;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AppFooter = AppFooter;
+//# sourceMappingURL=appFooter.component.js.map

@@ -22,6 +22,7 @@ var pageNotFound_component_1 = require("./pageNotFound.component");
 var utilities_module_1 = require("./_utilities/utilities.module");
 var appNav_component_1 = require("./appNav.component");
 var appHeader_component_1 = require("./appHeader.component");
+var appFooter_component_1 = require("./appFooter.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,6 +42,7 @@ var AppModule = (function () {
             declarations: [
                 appNav_component_1.AppNav,
                 appHeader_component_1.AppHeader,
+                appFooter_component_1.AppFooter,
                 app_component_1.AppComponent,
                 pageNotFound_component_1.PageNotFoundComponent
             ],
