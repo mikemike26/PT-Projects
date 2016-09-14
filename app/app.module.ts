@@ -10,6 +10,8 @@ import {ReportingModule} from "./reporting/reporting.module";
 import {TasksModule} from "./tasks/tasks.module";
 import {PageNotFoundComponent} from "./pageNotFound.component";
 import {UtilitiesModule} from "./_utilities/utilities.module";
+import {AppNav} from "./appNav.component";
+import {AppHeader} from "./appHeader.component";
 
 @NgModule({
     imports: [
@@ -24,6 +26,8 @@ import {UtilitiesModule} from "./_utilities/utilities.module";
         UtilitiesModule
     ],
     declarations: [
+        AppNav,
+        AppHeader,
         AppComponent,
         PageNotFoundComponent
     ],
@@ -31,4 +35,5 @@ import {UtilitiesModule} from "./_utilities/utilities.module";
     bootstrap: [AppComponent]
 })
 export class AppModule {
+    
 }

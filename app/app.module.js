@@ -20,6 +20,8 @@ var reporting_module_1 = require("./reporting/reporting.module");
 var tasks_module_1 = require("./tasks/tasks.module");
 var pageNotFound_component_1 = require("./pageNotFound.component");
 var utilities_module_1 = require("./_utilities/utilities.module");
+var appNav_component_1 = require("./appNav.component");
+var appHeader_component_1 = require("./appHeader.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,6 +39,8 @@ var AppModule = (function () {
                 utilities_module_1.UtilitiesModule
             ],
             declarations: [
+                appNav_component_1.AppNav,
+                appHeader_component_1.AppHeader,
                 app_component_1.AppComponent,
                 pageNotFound_component_1.PageNotFoundComponent
             ],
