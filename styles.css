@@ -1,7 +1,6 @@
-.myClass {
-  background-color: red;
-  color: blue;
-  font-size: 1em;
+p, h1, h2, h3, h4, h5, h6, li, span, div, body, html {
+  font-family: "Open Sans", sans-serif;
+  color: #000000;
 }
 
 /*# sourceMappingURL=styles.css.map */
