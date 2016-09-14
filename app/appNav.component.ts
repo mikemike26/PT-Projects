@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         <a href routerLink="/reporting" routerLinkActive="active">Reporting</a>
       </nav>
     `,
-    styles: []
+    styles: [".nav-header {background-color: #1278BB;}"]
 })
 
 export class AppNav { }

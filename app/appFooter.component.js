@@ -16,7 +16,7 @@ var AppFooter = (function () {
         core_1.Component({
             selector: 'app-footer',
             template: "\n      <footer>\n        <p>Market Technologies, Inc</p>\n      </footer>\n    ",
-            styles: ['p {text-align:right; margin: 1em; font-size: 0.8rem} footer {position: fixed; bottom: 0; left: 0; right: 0; border-top: 2px solid #e5e5e5;}']
+            styles: ['p {color: #ffffff; text-align:center; margin: 1em; font-size: 0.8rem} footer {background-color: #1278BB; position: fixed; bottom: 0; left: 0; right: 0; border-top: 2px solid #e5e5e5;}']
         }), 
         __metadata('design:paramtypes', [])
     ], AppFooter);

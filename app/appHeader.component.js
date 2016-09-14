@@ -16,7 +16,7 @@ var AppHeader = (function () {
         core_1.Component({
             selector: 'app-header',
             template: "\n      <header>\n        <h3>Project Time Site</h3>\n      </header>\n    ",
-            styles: ['h3 {margin:0; padding: 0.6em 0 0 0; text-align:center;} header {height: 3em; border-bottom: 2px solid #e5e5e5;}']
+            styles: ['h3 {font-weight: normal; color: #ffffff; margin:0; padding: 0.6em 0 0 0; text-align:center;} header {background-color: #1DAAF1; height: 3em; border-bottom: 2px solid #e5e5e5;}']
         }), 
         __metadata('design:paramtypes', [])
     ], AppHeader);

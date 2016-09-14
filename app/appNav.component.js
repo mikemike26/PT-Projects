@@ -16,7 +16,7 @@ var AppNav = (function () {
         core_1.Component({
             selector: 'app-nav',
             template: "\n      <nav>\n        <a href routerLink=\"/overview\" routerLinkActive=\"active\">Overview</a>\n        <a href routerLink=\"/tasks\" routerLinkActive=\"active\">Tasks</a>\n        <a href routerLink=\"/actions\" routerLinkActive=\"active\">Actions</a>\n        <a href routerLink=\"/projects\" routerLinkActive=\"active\">Projects</a>\n        <a href routerLink=\"/people\" routerLinkActive=\"active\">People</a>\n        <a href routerLink=\"/reporting\" routerLinkActive=\"active\">Reporting</a>\n      </nav>\n    ",
-            styles: []
+            styles: [".nav-header {background-color: #1278BB;}"]
         }), 
         __metadata('design:paramtypes', [])
     ], AppNav);
