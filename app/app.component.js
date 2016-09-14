@@ -15,8 +15,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-main',
-            template: "\n      <app-header></app-header>\n      \n      <app-nav></app-nav>\n      <router-outlet></router-outlet>\n      \n      <app-footer></app-footer>\n      \n    ",
-            styles: []
+            template: "\n      <app-header></app-header>\n      \n      <app-nav></app-nav>\n      <div class=\"view-container\">\n         <router-outlet></router-outlet>\n      </div>\n      \n      \n      <app-footer></app-footer>\n      \n    ",
+            styles: ["\n        app-nav {\n            position: absolute;\n            top: 0;\n            bottom: 2.7em;\n            left: 0;\n            z-index: 50;\n        }\n        .view-container {\n            position: absolute;\n            top: 3em;\n            left: 17em;\n            bottom: 2.7em;\n            right: 0;\n            background-color: #EEEEEE;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

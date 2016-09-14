@@ -23,6 +23,7 @@ import { Component } from '@angular/core';
         nav { 
             width: 17em;
             height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.26);
         }
         .nav-header {
             padding: 1em;
