@@ -12,40 +12,59 @@ import { PageNotFoundComponent } from "./pageNotFound.component";
 const appRoutes:Routes = [
     {
         path: '',
-        component: OverviewComponent
+        component: OverviewComponent,
+        data: {
+            title: 'Overview'
+        }
     },
     {
         path: 'overview',
-        component: OverviewComponent
+        component: OverviewComponent,
+        data: {
+            title: 'Overview'
+        }
     },
     {
         path: 'tasks',
-        component: TasksComponent
+        component: TasksComponent,
+        data: {
+            title: 'Taks'
+        }
     },
     {
         path: 'actions',
         component: ActionsComponent,
-        // data: {
-        //     title: 'Actions list'
-        // }
+        data: {
+            title: 'Actions'
+        }
     },
     {
         path: 'projects',
-        component: ProjectsComponent
-        
-        
+        component: ProjectsComponent,
+        data: {
+            title: 'Projects'
+        }
     },
     {
         path: 'people',
-        component: PeopleComponent
+        component: PeopleComponent,
+        data: {
+            title: 'People'
+        }
     },
     {
         path: 'reporting',
-        component: ReportingComponent
+        component: ReportingComponent,
+        data: {
+            title: 'Reporting'
+        }
     },
     {
         path: '**',
-        component: PageNotFoundComponent
+        component: PageNotFoundComponent,
+        data: {
+            title: 'Oops'
+        }
     }
 ];
 

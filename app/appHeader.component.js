@@ -9,16 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var AppHeader = (function () {
-    function AppHeader() {
+    function AppHeader(route, router) {
+        router.events.subscribe(function (event) {
+            if (event instanceof router_1.NavigationEnd) {
+                // console.log(router);
+                console.log(event);
+            }
+        });
     }
+    ;
     AppHeader = __decorate([
         core_1.Component({
             selector: 'app-header',
             template: "\n      <header>\n        <h3>Project Time Site</h3>\n      </header>\n    ",
             styles: ["\n        h3 {\n            font-weight: lighter; \n            color: #ffffff; \n            margin:0; \n            padding: 0.6em 0 0 0; \n            text-align:center;\n        } \n        header {\n            background-color: #1DAAF1; \n            height: 3em; \n        }\n    "]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
     ], AppHeader);
     return AppHeader;
 }());

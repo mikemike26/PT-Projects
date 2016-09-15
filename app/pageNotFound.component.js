@@ -15,7 +15,7 @@ var PageNotFoundComponent = (function () {
     PageNotFoundComponent = __decorate([
         core_1.Component({
             selector: 'page-not-found',
-            template: "\n      <h1>Page Not Found</h1>\n    "
+            template: "\n      <h1>We're sorry, but this page doesn't exist!</h1>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], PageNotFoundComponent);

@@ -38,7 +38,7 @@ import { Component } from '@angular/core';
             top: 3em;
             left: 17em;
             bottom: 2.7em;
-            right: 0;
+            right: -13em;
             background-color: #EEEEEE;
         }
         .view-container.close {

@@ -10,35 +10,59 @@ var pageNotFound_component_1 = require("./pageNotFound.component");
 var appRoutes = [
     {
         path: '',
-        component: overview_component_1.OverviewComponent
+        component: overview_component_1.OverviewComponent,
+        data: {
+            title: 'Overview'
+        }
     },
     {
         path: 'overview',
-        component: overview_component_1.OverviewComponent
+        component: overview_component_1.OverviewComponent,
+        data: {
+            title: 'Overview'
+        }
     },
     {
         path: 'tasks',
-        component: tasks_component_1.TasksComponent
+        component: tasks_component_1.TasksComponent,
+        data: {
+            title: 'Taks'
+        }
     },
     {
         path: 'actions',
         component: actions_component_1.ActionsComponent,
+        data: {
+            title: 'Actions'
+        }
     },
     {
         path: 'projects',
-        component: projects_component_1.ProjectsComponent
+        component: projects_component_1.ProjectsComponent,
+        data: {
+            title: 'Projects'
+        }
     },
     {
         path: 'people',
-        component: people_component_1.PeopleComponent
+        component: people_component_1.PeopleComponent,
+        data: {
+            title: 'People'
+        }
     },
     {
         path: 'reporting',
-        component: reporting_component_1.ReportingComponent
+        component: reporting_component_1.ReportingComponent,
+        data: {
+            title: 'Reporting'
+        }
     },
     {
         path: '**',
-        component: pageNotFound_component_1.PageNotFoundComponent
+        component: pageNotFound_component_1.PageNotFoundComponent,
+        data: {
+            title: 'Oops'
+        }
     }
 ];
 exports.appRoutingProviders = [];

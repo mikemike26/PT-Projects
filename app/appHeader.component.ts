@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -22,4 +23,18 @@ import { Component } from '@angular/core';
     `]
 })
 
-export class AppHeader { }
+export class AppHeader {
+    constructor(
+        route: ActivatedRoute,
+        router: Router
+    ) {
+        router.events.subscribe(event => {
+            if(event instanceof NavigationEnd) {
+                // console.log(router);
+                console.log(event);
+            }
+        })
+    };
+
+
+}
