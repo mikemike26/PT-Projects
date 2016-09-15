@@ -15,6 +15,11 @@ import { Component } from '@angular/core';
       
     `,
     styles: [`
+        :host {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
         app-header {
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
             position: absolute;

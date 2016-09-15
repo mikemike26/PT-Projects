@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ProjectsComponent = (function () {
-    function ProjectsComponent() {
+var ProjectsListComponent = (function () {
+    function ProjectsListComponent() {
     }
-    ProjectsComponent = __decorate([
+    ProjectsListComponent = __decorate([
         core_1.Component({
-            selector: 'projects',
-            template: "\n\n      <h1>Projects</h1>\n    ",
-            styles: ["\n        :host {\n            display: block;\n            width: 100%;\n            height: 100%;\n        }\n    "]
+            selector: 'projects-list',
+            template: "\n      \n    ",
+            styles: ["\n        :host {\n            display: block;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
-    ], ProjectsComponent);
-    return ProjectsComponent;
+    ], ProjectsListComponent);
+    return ProjectsListComponent;
 }());
-exports.ProjectsComponent = ProjectsComponent;
-//# sourceMappingURL=projects.component.js.map
+exports.ProjectsListComponent = ProjectsListComponent;
+//# sourceMappingURL=projectsList.component.js.map

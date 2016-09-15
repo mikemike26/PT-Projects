@@ -27,6 +27,9 @@ import {Component, Output, EventEmitter} from '@angular/core';
       </nav>
     `,
     styles: [`
+        :host {
+            display: block;
+        }
         nav { 
             width: 17em;
             height: 100%;

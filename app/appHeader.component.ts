@@ -9,6 +9,9 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
       </header>
     `,
     styles: [`
+        :host {
+            display: block;
+        }
         h3 {
             font-weight: lighter; 
             color: #ffffff; 
