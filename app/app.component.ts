@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
     template: `
       <app-header></app-header>
       
-      <app-nav></app-nav>
-      <div class="view-container">
+      <app-nav [class.close]="navClosed" (menuClosedEvent)="navClose($event)"></app-nav>
+      <div class="view-container" [class.close]="navClosed">
          <router-outlet></router-outlet>
       </div>
       
@@ -22,6 +22,9 @@ import { Component } from '@angular/core';
             left: 0;
             z-index: 50;
         }
+        app-nav.close {
+            left: -13em;
+        }
         .view-container {
             position: absolute;
             top: 3em;
@@ -30,7 +33,16 @@ import { Component } from '@angular/core';
             right: 0;
             background-color: #EEEEEE;
         }
+        .view-container.close {
+            left: 4em;
+        }
     `]
 })
 
-export class AppComponent { }
+export class AppComponent {
+    navClosed = false;
+
+    navClose(closed:boolean) {
+        this.navClosed = closed;
+    }
+}

@@ -22,8 +22,21 @@ a {
   }
 }
 
+.hide-element {
+  display: none!important;
+}
+
 .material-icons {
-  color: #6F6F6F;
+  color: inherit;
   position: relative;
   top: 0.2em;
+}
+
+.material-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }
