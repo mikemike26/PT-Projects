@@ -11,11 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ProjectsComponent = (function () {
     function ProjectsComponent() {
+        this.deleteConfirm = false;
     }
+    ProjectsComponent.prototype.deletePrompt = function () {
+        this.deleteConfirm = true;
+    };
+    ProjectsComponent.prototype.deleteProject = function () {
+        this.deleteConfirm = false;
+    };
     ProjectsComponent = __decorate([
         core_1.Component({
             selector: 'projects',
-            template: "\n      <h1><i class=\"material-icons\">&#xE8DF;</i> Projects</h1>\n      <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">New Project</button>\n      <projects-list></projects-list>\n    ",
+            template: "\n      <h1><i class=\"material-icons\">&#xE8DF;</i> Projects</h1>\n      <div [class.hidden]=\"deleteConfirm\">\n          <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">New Project</button>\n          <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\" (click)=\"deletePrompt()\">Delete Project</button>\n      </div>\n      <div [class.hidden]=\"!deleteConfirm\">\n          <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\" (click)=\"deleteProject()\">Cancel</button>\n          <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--accent\" (click)=\"deleteProject()\">Are you sure?</button>\n      </div>\n      <projects-list></projects-list>\n    ",
             styles: ["\n        :host {\n            display: block;\n            width: 100%;\n            height: 100%;\n        }\n        .material-icons {\n            color: #666666;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])

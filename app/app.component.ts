@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
         app-nav {
             position: absolute;
             top: 0;
-            bottom: 2.7em;
+            bottom: 3.3em;
             left: 0;
             z-index: 50;
         }
