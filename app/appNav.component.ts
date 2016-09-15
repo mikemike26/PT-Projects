@@ -10,12 +10,18 @@ import { Component } from '@angular/core';
            <p class="user-email">mike.rensel@mktec.com</p>
         </div>
         <div class="nav-body">
-            <a href routerLink="/overview" routerLinkActive="active"><i class="material-icons">&#xE905;</i> Overview</a>
-            <a href routerLink="/tasks" routerLinkActive="active"><i class="material-icons">&#xE924;</i> Tasks</a>
-            <a href routerLink="/actions" routerLinkActive="active"><i class="material-icons">&#xE160;</i> Actions</a>
-            <a href routerLink="/projects" routerLinkActive="active"><i class="material-icons">&#xE8DF;</i> Projects</a>
-            <a href routerLink="/people" routerLinkActive="active"><i class="material-icons">&#xE7FB;</i> People</a>
-            <a href routerLink="/reporting" routerLinkActive="active"><i class="material-icons">&#xE6E1;</i> Reporting</a>
+            <div class="nav-group">
+                <a href routerLink="/overview" routerLinkActive="active"><i class="material-icons">&#xE905;</i> Overview</a>
+            </div>
+            <div class="nav-group">
+                <a href routerLink="/tasks" routerLinkActive="active"><i class="material-icons">&#xE877;</i> Tasks</a>
+                <a href routerLink="/actions" routerLinkActive="active"><i class="material-icons">&#xE160;</i> Actions</a>
+            </div>
+            <div class="nav-group">
+                <a href routerLink="/projects" routerLinkActive="active"><i class="material-icons">&#xE8DF;</i> Projects</a>
+                <a href routerLink="/people" routerLinkActive="active"><i class="material-icons">&#xE7FB;</i> People</a>
+                <a href routerLink="/reporting" routerLinkActive="active"><i class="material-icons">&#xE6E1;</i> Reporting</a>
+            </div>
         </div>
       </nav>
     `,
@@ -32,6 +38,12 @@ import { Component } from '@angular/core';
             background-color: #1278BB; 
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
         } 
+        .nav-body {
+            padding-top: 1em;
+        }
+        .nav-group {
+            margin-bottom: 1.5em;
+        }
         img {
             width: 5em; 
             height: auto; 
