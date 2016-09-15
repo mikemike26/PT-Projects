@@ -15,6 +15,14 @@ import { Component } from '@angular/core';
       
     `,
     styles: [`
+        app-header {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 40;
+        }
         app-nav {
             position: absolute;
             top: 0;

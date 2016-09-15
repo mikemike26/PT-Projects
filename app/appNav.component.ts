@@ -74,7 +74,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
             position: relative;
             height: 1.8em;
         }
-        a:active {
+        a.active, a:active {
             background-color: #e6e7e6;
         }
         i {
@@ -107,6 +107,5 @@ export class AppNav {
         this.menuClosed = !this.menuClosed;
         
         this.menuClosedEvent.emit(this.menuClosed);
-        console.log(this.menuClosed);
     }
 }
