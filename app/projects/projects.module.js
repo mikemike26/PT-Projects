@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var projects_component_1 = require("./projects.component");
+var projectsList_component_1 = require("./projectsList.component");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
@@ -20,7 +21,8 @@ var ProjectsModule = (function () {
                 platform_browser_1.BrowserModule
             ],
             declarations: [
-                projects_component_1.ProjectsComponent
+                projects_component_1.ProjectsComponent,
+                projectsList_component_1.ProjectsListComponent
             ],
             providers: []
         }), 

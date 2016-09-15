@@ -39,6 +39,7 @@ import { Component } from '@angular/core';
             left: -13em;
         }
         .view-container {
+            padding: 0 1em;
             position: absolute;
             top: 3em;
             left: 17em;

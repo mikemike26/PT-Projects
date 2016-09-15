@@ -15,7 +15,7 @@ var ProjectsListComponent = (function () {
     ProjectsListComponent = __decorate([
         core_1.Component({
             selector: 'projects-list',
-            template: "\n      \n    ",
+            template: "\n      <div>projects list</div>\n    ",
             styles: ["\n        :host {\n            display: block;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])

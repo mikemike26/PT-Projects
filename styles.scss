@@ -1,11 +1,20 @@
 //===========================GLOBAL==========================
 @import 'styles/normalize';
 @import 'styles/material-icons';
+@import 'styles/material';
 
 
 p, a, h1, h2, h3, h4, h5, h6, li, span, div, body, html {
   font-family: "Open Sans", sans-serif;
   color: #262626;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 1.4rem;
+  i {
+    font-size: 1.3rem;
+  }
 }
 
 a {

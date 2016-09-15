@@ -15,8 +15,8 @@ var ProjectsComponent = (function () {
     ProjectsComponent = __decorate([
         core_1.Component({
             selector: 'projects',
-            template: "\n\n      <h1>Projects</h1>\n    ",
-            styles: ["\n        :host {\n            display: block;\n            width: 100%;\n            height: 100%;\n        }\n    "]
+            template: "\n      <h1><i class=\"material-icons\">&#xE8DF;</i> Projects</h1>\n      <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">New Project</button>\n      <projects-list></projects-list>\n    ",
+            styles: ["\n        :host {\n            display: block;\n            width: 100%;\n            height: 100%;\n        }\n        .material-icons {\n            color: #666666;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectsComponent);
