@@ -18,6 +18,8 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
             margin:0; 
             padding: 0.6em 0 0 0; 
             text-align:center;
+            font-size: 1.4em;
+            line-height: 1em;
         } 
         header {
             background-color: #1DAAF1; 
