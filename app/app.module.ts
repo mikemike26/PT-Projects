@@ -1,4 +1,4 @@
-import {NgModule}      from '@angular/core';
+import {NgModule} from '@angular/core';
 import {routing, appRoutingProviders} from './app.routing';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent}   from './app.component';
@@ -13,6 +13,7 @@ import {UtilitiesModule} from "./_utilities/utilities.module";
 import {AppNav} from "./appNav.component";
 import {AppHeader} from "./appHeader.component";
 import {AppFooter} from "./appFooter.component";
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import {AppFooter} from "./appFooter.component";
         ProjectsModule,
         ReportingModule,
         TasksModule,
-        UtilitiesModule
+        UtilitiesModule,
+        HttpModule
     ],
     declarations: [
         AppNav,
@@ -33,7 +35,9 @@ import {AppFooter} from "./appFooter.component";
         AppComponent,
         PageNotFoundComponent
     ],
-    providers: [appRoutingProviders],
+    providers: [
+        appRoutingProviders
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

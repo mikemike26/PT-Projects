@@ -23,6 +23,7 @@ var utilities_module_1 = require("./_utilities/utilities.module");
 var appNav_component_1 = require("./appNav.component");
 var appHeader_component_1 = require("./appHeader.component");
 var appFooter_component_1 = require("./appFooter.component");
+var http_1 = require('@angular/http');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,7 +38,8 @@ var AppModule = (function () {
                 projects_module_1.ProjectsModule,
                 reporting_module_1.ReportingModule,
                 tasks_module_1.TasksModule,
-                utilities_module_1.UtilitiesModule
+                utilities_module_1.UtilitiesModule,
+                http_1.HttpModule
             ],
             declarations: [
                 appNav_component_1.AppNav,
@@ -46,7 +48,9 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 pageNotFound_component_1.PageNotFoundComponent
             ],
-            providers: [app_routing_1.appRoutingProviders],
+            providers: [
+                app_routing_1.appRoutingProviders
+            ],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -19,6 +19,7 @@ import { Component } from '@angular/core';
             display: block;
             width: 100%;
             height: 100%;
+            position: relative;
         }
         .material-icons {
             color: #666666;

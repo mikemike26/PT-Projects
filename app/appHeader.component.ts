@@ -11,6 +11,8 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
     styles: [`
         :host {
             display: block;
+            z-index: 40;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
         }
         h3 {
             font-weight: lighter; 
@@ -36,7 +38,6 @@ export class AppHeader {
         router.events.subscribe(event => {
             if(event instanceof NavigationEnd) {
                 // console.log(router);
-                console.log(event);
             }
         })
     };

@@ -6,9 +6,9 @@ import {BrowserModule} from '@angular/platform-browser';
         BrowserModule
     ],
     declarations: [
-
     ],
     providers: []
 })
 export class UtilitiesModule {
+
 }

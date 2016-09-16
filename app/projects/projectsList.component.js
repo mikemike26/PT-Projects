@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var projectsData_1 = require("../_models/projectsData");
 var ProjectsListComponent = (function () {
-    function ProjectsListComponent() {
+    function ProjectsListComponent(projectsData) {
+        this.projectsData = projectsData;
     }
+    ProjectsListComponent.prototype.ngOnInit = function () {
+        this.projects = this.projectsData.getProjects();
+        // console.log(this.projects);
+    };
     ProjectsListComponent = __decorate([
         core_1.Component({
             selector: 'projects-list',
-            template: "\n      <div>projects list</div>\n    ",
-            styles: ["\n        :host {\n            display: block;\n        }\n    "]
+            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\">{{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n            position: absolute;\n            top: 7.3em;\n            bottom: 1.5em;\n            overflow: auto;\n            padding: 0.7em 0 1em 0;\n        }\n        .mdl-card {\n            margin-bottom: 1em;\n        }\n    "],
+            providers: [projectsData_1.ProjectsData]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [projectsData_1.ProjectsData])
     ], ProjectsListComponent);
     return ProjectsListComponent;
 }());

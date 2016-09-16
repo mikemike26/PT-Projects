@@ -12,17 +12,21 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var projects_component_1 = require("./projects.component");
 var projectsList_component_1 = require("./projectsList.component");
+var utilities_module_1 = require("../_utilities/utilities.module");
+var ptLimitWords_directive_1 = require("../_utilities/ptLimitWords.directive");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
     ProjectsModule = __decorate([
         core_1.NgModule({
             imports: [
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule,
+                utilities_module_1.UtilitiesModule
             ],
             declarations: [
                 projects_component_1.ProjectsComponent,
-                projectsList_component_1.ProjectsListComponent
+                projectsList_component_1.ProjectsListComponent,
+                ptLimitWords_directive_1.PtLimitWordsDirective
             ],
             providers: []
         }), 

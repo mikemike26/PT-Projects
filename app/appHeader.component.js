@@ -14,8 +14,6 @@ var AppHeader = (function () {
     function AppHeader(route, router) {
         router.events.subscribe(function (event) {
             if (event instanceof router_1.NavigationEnd) {
-                // console.log(router);
-                console.log(event);
             }
         });
     }
@@ -24,7 +22,7 @@ var AppHeader = (function () {
         core_1.Component({
             selector: 'app-header',
             template: "\n      <header>\n        <h3>Project Time Site</h3>\n      </header>\n    ",
-            styles: ["\n        :host {\n            display: block;\n        }\n        h3 {\n            font-weight: lighter; \n            color: #ffffff; \n            margin:0; \n            padding: 0.6em 0 0 0; \n            text-align:center;\n            font-size: 1.4em;\n            line-height: 1em;\n        } \n        header {\n            background-color: #1DAAF1; \n            height: 3em; \n        }\n    "]
+            styles: ["\n        :host {\n            display: block;\n            z-index: 40;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);\n        }\n        h3 {\n            font-weight: lighter; \n            color: #ffffff; \n            margin:0; \n            padding: 0.6em 0 0 0; \n            text-align:center;\n            font-size: 1.4em;\n            line-height: 1em;\n        } \n        header {\n            background-color: #1DAAF1; \n            height: 3em; \n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
     ], AppHeader);

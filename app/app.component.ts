@@ -21,19 +21,16 @@ import { Component } from '@angular/core';
             width: 100%;
         }
         app-header {
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
             position: absolute;
             left: 0;
             right: 0;
             top: 0;
-            z-index: 40;
         }
         app-nav {
             position: absolute;
             top: 0;
             bottom: 3.3em;
             left: 0;
-            z-index: 50;
         }
         app-nav.close {
             left: -13em;

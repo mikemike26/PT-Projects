@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
     styles: [`
         :host {
             display: block;
+            z-index: 40;
         }    
         p {
             color: #ffffff; 
