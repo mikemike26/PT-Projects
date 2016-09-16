@@ -21,8 +21,8 @@ var ProjectsListComponent = (function () {
     ProjectsListComponent = __decorate([
         core_1.Component({
             selector: 'projects-list',
-            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\">{{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n    ",
-            styles: ["\n        :host {\n            display: block;\n            position: absolute;\n            top: 7.3em;\n            bottom: 1.5em;\n            overflow: auto;\n            padding: 0.7em 0 1em 0;\n        }\n        .mdl-card {\n            margin-bottom: 1em;\n        }\n    "],
+            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\"><i class=\"material-icons\">&#xE8DF;</i> {{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n            position: absolute;\n            top: 7.3em;\n            bottom: 1.5em;\n            overflow: auto;\n            padding: 0.7em 0 1em 0;\n        }\n        .mdl-card {\n            margin-bottom: 1em;\n            min-height: 5em;\n        }\n        .material-icons {\n            color: #6F6F6F;\n        }\n    "],
             providers: [projectsData_1.ProjectsData]
         }), 
         __metadata('design:paramtypes', [projectsData_1.ProjectsData])
