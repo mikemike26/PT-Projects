@@ -7,10 +7,10 @@ import {Directive, ElementRef, Input, Renderer} from '@angular/core';
     host: {}
 })
 export class PtLimitWordsDirective {
-    private _text: String;
-    private _limit: Number;
+    private _text: string;
+    private _limit: number;
 
-    private limitText() {
+    private limitText(): string {
         let text = this._text,
             textArray: String[] = text.split(" "),
             output: String[] = [],
@@ -39,7 +39,7 @@ export class PtLimitWordsDirective {
     }
 
     @Input()
-    set limit(limit: Number) {
+    set limit(limit: number) {
         this._limit = limit;
     }
 
