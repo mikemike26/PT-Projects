@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProjectsService} from "./projects.service";
 
 @Component({
     selector: 'projects-detail',
@@ -15,6 +17,16 @@ import { Component } from '@angular/core';
 })
 
 export class ProjectsDetailComponent {
-    
+    private sub: any;
+
+    constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {
+
+    }
+
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.projectsService.setParams(params);
+        });
+    }
 
 }

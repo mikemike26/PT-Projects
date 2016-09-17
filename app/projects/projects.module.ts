@@ -8,6 +8,7 @@ import {PtLimitWordsDirective} from "../_utilities/ptLimitWords.directive";
 import {projectsRouting} from "./projects.routing";
 import {ProjectsDetailComponent} from "./projectsDetail.component";
 import {ProjectsData} from "../_models/projectsData";
+import {ProjectsService} from "./projects.service";
 
 @NgModule({
     imports: [
@@ -21,7 +22,7 @@ import {ProjectsData} from "../_models/projectsData";
         PtLimitWordsDirective,
         ProjectsDetailComponent
     ],
-    providers: [ProjectsData]
+    providers: [ProjectsData, ProjectsService]
 })
 export class ProjectsModule {
 }

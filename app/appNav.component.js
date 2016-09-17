@@ -15,7 +15,7 @@ var AppNav = (function () {
         var _this = this;
         this.appNavService = appNavService;
         this.menuClosed = false;
-        this.subscription = appNavService.navClose$.subscribe(function (navClose) {
+        this.sub = appNavService.navClose$.subscribe(function (navClose) {
             _this.menuClosed = navClose;
         });
     }
@@ -24,7 +24,7 @@ var AppNav = (function () {
     };
     AppNav.prototype.ngOnDestroy = function () {
         // prevent memory leak when component destroyed
-        this.subscription.unsubscribe();
+        this.sub.unsubscribe();
     };
     AppNav = __decorate([
         core_1.Component({

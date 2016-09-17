@@ -12,28 +12,38 @@ var core_1 = require('@angular/core');
 var projectsData_1 = require("../_models/projectsData");
 var router_1 = require('@angular/router');
 var appNav_service_1 = require("../appNav.service");
+var projects_service_1 = require("./projects.service");
 var ProjectsListComponent = (function () {
-    function ProjectsListComponent(projectsData, router, appNavService) {
+    function ProjectsListComponent(projectsData, router, appNavService, projectsService) {
+        var _this = this;
         this.projectsData = projectsData;
         this.router = router;
         this.appNavService = appNavService;
+        this.projectsService = projectsService;
+        //we set the route params in our projectsService to bootstrap them up from the child
+        this.sub = projectsService.projectParams$.subscribe(function (projectsParams) {
+            _this.selectedId = +projectsParams.id;
+        });
     }
     ProjectsListComponent.prototype.ngOnInit = function () {
         this.projects = this.projectsData.getProjects();
-        // console.log(this.projects);
     };
     ProjectsListComponent.prototype.selectProject = function (project) {
-        // console.log(project);
         this.appNavService.navClose(true);
+        this.selectedId = project.id;
         this.router.navigate(['/projects/details', project.id]);
+    };
+    ProjectsListComponent.prototype.ngOnDestroy = function () {
+        // prevent memory leak when component destroyed
+        this.sub.unsubscribe();
     };
     ProjectsListComponent = __decorate([
         core_1.Component({
             selector: 'projects-list',
-            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\" (click)=\"selectProject(project)\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\"><i class=\"material-icons\">&#xE8DF;</i> {{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n    ",
-            styles: ["\n        :host {\n            display: block;\n            position: absolute;\n            top: 7.3em;\n            bottom: 1.5em;\n            overflow: auto;\n            padding: 0.7em 0 1em 0;\n        }\n        .mdl-card {\n            margin-bottom: 1em;\n            min-height: 5em;\n            cursor: pointer;\n        }\n        .material-icons {\n            color: #6F6F6F;\n        }\n    "]
+            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\" (click)=\"selectProject(project)\" [class.selected]=\"selectedId === project.id\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\"><i class=\"material-icons\">&#xE8DF;</i> {{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n            position: absolute;\n            top: 7.3em;\n            bottom: 1.5em;\n            overflow: auto;\n            padding: 0.7em 1em 1em 0;\n        }\n        .mdl-card {\n            margin-bottom: 1em;\n            min-height: 5em;\n            cursor: pointer;\n        }\n        .mdl-card.selected {\n            box-shadow: 5px 6px 9px 0 rgba(0, 0, 0, .5);\n            position: relative;\n            bottom: .5em;\n                \n        }\n        .material-icons {\n            color: #6F6F6F;\n        }\n    "]
         }), 
-        __metadata('design:paramtypes', [projectsData_1.ProjectsData, router_1.Router, appNav_service_1.AppNavService])
+        __metadata('design:paramtypes', [projectsData_1.ProjectsData, router_1.Router, appNav_service_1.AppNavService, projects_service_1.ProjectsService])
     ], ProjectsListComponent);
     return ProjectsListComponent;
 }());

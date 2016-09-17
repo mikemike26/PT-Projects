@@ -17,6 +17,7 @@ var ptLimitWords_directive_1 = require("../_utilities/ptLimitWords.directive");
 var projects_routing_1 = require("./projects.routing");
 var projectsDetail_component_1 = require("./projectsDetail.component");
 var projectsData_1 = require("../_models/projectsData");
+var projects_service_1 = require("./projects.service");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
@@ -33,7 +34,7 @@ var ProjectsModule = (function () {
                 ptLimitWords_directive_1.PtLimitWordsDirective,
                 projectsDetail_component_1.ProjectsDetailComponent
             ],
-            providers: [projectsData_1.ProjectsData]
+            providers: [projectsData_1.ProjectsData, projects_service_1.ProjectsService]
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectsModule);

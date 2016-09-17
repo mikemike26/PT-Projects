@@ -101,13 +101,12 @@ import {AppNavService} from "./appNav.service";
 
 export class AppNav {
     menuClosed:boolean = false;
-    subscription: Subscription;
+    sub: Subscription;
 
     constructor(private appNavService: AppNavService) {
-        this.subscription = appNavService.navClose$.subscribe(
-            navClose => {
-                this.menuClosed = navClose
-            });
+        this.sub = appNavService.navClose$.subscribe(navClose => {
+            this.menuClosed = navClose
+        });
     }
 
     menuToggle() {
@@ -116,7 +115,7 @@ export class AppNav {
 
     ngOnDestroy() {
         // prevent memory leak when component destroyed
-        this.subscription.unsubscribe();
+        this.sub.unsubscribe();
     }
 
 }
