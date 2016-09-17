@@ -14,6 +14,7 @@ import {AppNav} from "./appNav.component";
 import {AppHeader} from "./appHeader.component";
 import {AppFooter} from "./appFooter.component";
 import { HttpModule } from '@angular/http';
+import {AppNavService} from "./appNav.service";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { HttpModule } from '@angular/http';
         PageNotFoundComponent
     ],
     providers: [
-        appRoutingProviders
+        appRoutingProviders,
+        AppNavService
     ],
     bootstrap: [AppComponent]
 })

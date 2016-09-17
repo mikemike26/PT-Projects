@@ -14,6 +14,9 @@ var projects_component_1 = require("./projects.component");
 var projectsList_component_1 = require("./projectsList.component");
 var utilities_module_1 = require("../_utilities/utilities.module");
 var ptLimitWords_directive_1 = require("../_utilities/ptLimitWords.directive");
+var projects_routing_1 = require("./projects.routing");
+var projectsDetail_component_1 = require("./projectsDetail.component");
+var projectsData_1 = require("../_models/projectsData");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
@@ -21,14 +24,16 @@ var ProjectsModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                utilities_module_1.UtilitiesModule
+                utilities_module_1.UtilitiesModule,
+                projects_routing_1.projectsRouting
             ],
             declarations: [
                 projects_component_1.ProjectsComponent,
                 projectsList_component_1.ProjectsListComponent,
-                ptLimitWords_directive_1.PtLimitWordsDirective
+                ptLimitWords_directive_1.PtLimitWordsDirective,
+                projectsDetail_component_1.ProjectsDetailComponent
             ],
-            providers: []
+            providers: [projectsData_1.ProjectsData]
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectsModule);

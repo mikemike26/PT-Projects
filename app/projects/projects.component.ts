@@ -4,15 +4,18 @@ import { Component } from '@angular/core';
     selector: 'projects',
     template: `
       <h1><i class="material-icons">&#xE8DF;</i> Projects</h1>
-      <div [class.hidden]="deleteConfirm">
+      <div *ngIf="!deleteConfirm">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">New Project</button>
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="deletePrompt()">Delete Project</button>
       </div>
-      <div [class.hidden]="!deleteConfirm">
+      <div *ngIf="deleteConfirm">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="deleteProject()">Cancel</button>
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" (click)="deleteProject()">Are you sure?</button>
       </div>
       <projects-list></projects-list>
+      <div class="projects-view">
+          <router-outlet></router-outlet>
+      </div>
     `,
     styles: [`
         :host {
@@ -23,6 +26,13 @@ import { Component } from '@angular/core';
         }
         .material-icons {
             color: #666666;
+        }
+        .projects-view {
+            position: absolute;
+            left: 24.5em;
+            top: 0;
+            right: 0;
+            bottom: 0;
         }
     `]
 })

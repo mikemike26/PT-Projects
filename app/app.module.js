@@ -24,6 +24,7 @@ var appNav_component_1 = require("./appNav.component");
 var appHeader_component_1 = require("./appHeader.component");
 var appFooter_component_1 = require("./appFooter.component");
 var http_1 = require('@angular/http');
+var appNav_service_1 = require("./appNav.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -49,7 +50,8 @@ var AppModule = (function () {
                 pageNotFound_component_1.PageNotFoundComponent
             ],
             providers: [
-                app_routing_1.appRoutingProviders
+                app_routing_1.appRoutingProviders,
+                appNav_service_1.AppNavService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

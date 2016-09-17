@@ -1,4 +1,6 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
+import {Subscription} from "rxjs/Subscription";
+import {AppNavService} from "./appNav.service";
 
 @Component({
     selector: 'app-nav',
@@ -12,16 +14,16 @@ import {Component, Output, EventEmitter} from '@angular/core';
         </div>
         <div class="nav-body">
             <div class="nav-group">
-                <a href routerLink="/overview" routerLinkActive="active" (click)="closeMenu()"><i class="material-icons">&#xE905;</i> Overview</a>
+                <a href routerLink="/overview" routerLinkActive="active"><i class="material-icons">&#xE905;</i> Overview</a>
             </div>
             <div class="nav-group">
-                <a href routerLink="/tasks" routerLinkActive="active" (click)="closeMenu()"><i class="material-icons">&#xE877;</i> Tasks</a>
-                <a href routerLink="/actions" routerLinkActive="active" (click)="closeMenu()"><i class="material-icons">&#xE160;</i> Actions</a>
+                <a href routerLink="/tasks" routerLinkActive="active"><i class="material-icons">&#xE877;</i> Tasks</a>
+                <a href routerLink="/actions" routerLinkActive="active"><i class="material-icons">&#xE160;</i> Actions</a>
             </div>
             <div class="nav-group">
-                <a href routerLink="/projects" routerLinkActive="active" (click)="closeMenu()"><i class="material-icons">&#xE8DF;</i> Projects</a>
-                <a href routerLink="/people" routerLinkActive="active" (click)="closeMenu()"><i class="material-icons">&#xE7FB;</i> People</a>
-                <a href routerLink="/reporting" routerLinkActive="active" (click)="closeMenu()"><i class="material-icons">&#xE6E1;</i> Reporting</a>
+                <a href routerLink="/projects" routerLinkActive="active"><i class="material-icons">&#xE8DF;</i> Projects</a>
+                <a href routerLink="/people" routerLinkActive="active"><i class="material-icons">&#xE7FB;</i> People</a>
+                <a href routerLink="/reporting" routerLinkActive="active"><i class="material-icons">&#xE6E1;</i> Reporting</a>
             </div>
         </div>
       </nav>
@@ -98,18 +100,23 @@ import {Component, Output, EventEmitter} from '@angular/core';
 })
 
 export class AppNav {
-    @Output() menuClosedEvent = new EventEmitter<boolean>();
-    
     menuClosed:boolean = false;
+    subscription: Subscription;
 
-    closeMenu() {
-        this.menuClosed = true;
-        this.menuClosedEvent.emit(true);
+    constructor(private appNavService: AppNavService) {
+        this.subscription = appNavService.navClose$.subscribe(
+            navClose => {
+                this.menuClosed = navClose
+            });
     }
 
     menuToggle() {
-        this.menuClosed = !this.menuClosed;
-        
-        this.menuClosedEvent.emit(this.menuClosed);
+        this.appNavService.navClose(!this.menuClosed);
     }
+
+    ngOnDestroy() {
+        // prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
+
 }
