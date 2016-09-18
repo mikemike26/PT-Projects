@@ -48,11 +48,13 @@ var ProjectsData = (function () {
             }
         ];
     }
-    ProjectsData.prototype.getProjects = function (callback) {
-        var _this = this;
-        setTimeout(function () {
-            callback(_this.createProjects(_this.dummyProjects));
-        }, 500);
+    ProjectsData.prototype.getProjects = function () {
+        var dummyProjects = this.createProjects(this.dummyProjects);
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(dummyProjects);
+            }, 500);
+        });
     };
     ProjectsData.prototype.createProjects = function (projects) {
         var output = [];

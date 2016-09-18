@@ -20,11 +20,11 @@ var ProjectsDetailComponent = (function () {
     }
     ProjectsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.appNavService.navClose(true);
         //on route change, set params in projectsServer so our parent component can make use of it
         this.sub = this.route.params.subscribe(function (params) {
             _this.projectsService.setParams(params);
             _this.selectedId = +params["id"];
+            _this.appNavService.navClose(_this.selectedId > -1);
         });
     };
     ProjectsDetailComponent = __decorate([

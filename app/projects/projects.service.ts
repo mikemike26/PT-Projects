@@ -15,6 +15,14 @@ export class ProjectsService {
         return this.projects[id];
     }
     
+    getProjects() {
+        return this.projects;
+    }
+    
+    numberOfProjects() {
+        return this.projects.length;
+    }
+    
     //=========================== Projects route param observer ===================================
     // Observable string sources
     private projectsParams = new Subject<any>();
@@ -34,11 +42,17 @@ export class ProjectsService {
     // Observable string streams
     projects$ = this.projectsObs.asObservable();
 
-    // getch projects from our model
+    // get projects from our model
+    setProjects(projects) {
+        this.projects = projects;
+        this.projectsObs.next(projects);
+    }
+
     fetchProjects() {
-        this.projectsData.getProjects((data) => {
-            this.projects = data;
-            this.projectsObs.next(data);
+        this.projectsData.getProjects().then(projects => {
+            if (projects) {
+                this.setProjects(projects);
+            }
         });
     }
     //=============================================================================================

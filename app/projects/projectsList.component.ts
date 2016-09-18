@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {ProjectsData} from "../_models/projectsData";
 import {Project} from "./_classes/project";
 import {Router} from '@angular/router';
 import {AppNavService} from "../appNav.service";
@@ -15,6 +14,8 @@ import {Subscription} from "rxjs/Subscription";
           </div>
           <div class="mdl-card__supporting-text" [ptLimitWords]="project.description" limit="20"></div>
       </div>
+      
+      <p *ngIf="projects ? projects.length === 0 : false">There are no projects</p>
     `,
     styles: [`
         :host {
@@ -46,10 +47,11 @@ import {Subscription} from "rxjs/Subscription";
 })
 
 export class ProjectsListComponent {
-    projects: Project[];
-    selectedId: number;
     private sub1: Subscription;
     private sub2: Subscription;
+
+    projects: Project[] = [];
+    selectedId: number;
 
     constructor(private router: Router, 
                 private appNavService: AppNavService,
@@ -66,10 +68,9 @@ export class ProjectsListComponent {
             this.projects = projects;
         });
     }
-
+    
     ngOnInit() {
-        console.log("INIT!!");
-        this.projectsService.fetchProjects();
+        this.projects = this.projectsService.getProjects();
     }
 
     selectProject(project: Project) {

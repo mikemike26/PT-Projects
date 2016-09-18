@@ -7,7 +7,7 @@ import {ProjectsService} from "./projects.service";
       <h1><i class="material-icons">&#xE8DF;</i> Projects</h1>
       <div *ngIf="!deleteConfirm">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">New Project</button>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="deletePrompt()">Delete Project</button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" *ngIf="numberOfProjects > 0" (click)="deletePrompt()">Delete Project</button>
       </div>
       <div *ngIf="deleteConfirm">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="deleteProject()">Cancel</button>
@@ -42,7 +42,17 @@ import {ProjectsService} from "./projects.service";
 })
 
 export class ProjectsComponent {
-    deleteConfirm : boolean = false;
+
+    numberOfProjects: number;
+    deleteConfirm: boolean = false;
+
+    constructor(private projectsService: ProjectsService) {
+
+    }
+
+    ngOnInit() {
+        this.numberOfProjects = this.projectsService.numberOfProjects();
+    }
 
     deletePrompt() {
         this.deleteConfirm = true;

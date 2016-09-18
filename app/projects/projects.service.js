@@ -28,16 +28,27 @@ var ProjectsService = (function () {
     ProjectsService.prototype.getProject = function (id) {
         return this.projects[id];
     };
+    ProjectsService.prototype.getProjects = function () {
+        return this.projects;
+    };
+    ProjectsService.prototype.numberOfProjects = function () {
+        return this.projects.length;
+    };
     // Service message commands
     ProjectsService.prototype.setParams = function (projectsParams) {
         this.projectsParams.next(projectsParams);
     };
-    // getch projects from our model
+    // get projects from our model
+    ProjectsService.prototype.setProjects = function (projects) {
+        this.projects = projects;
+        this.projectsObs.next(projects);
+    };
     ProjectsService.prototype.fetchProjects = function () {
         var _this = this;
-        this.projectsData.getProjects(function (data) {
-            _this.projects = data;
-            _this.projectsObs.next(data);
+        this.projectsData.getProjects().then(function (projects) {
+            if (projects) {
+                _this.setProjects(projects);
+            }
         });
     };
     ProjectsService = __decorate([

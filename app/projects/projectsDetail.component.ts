@@ -28,13 +28,12 @@ export class ProjectsDetailComponent {
     }
 
     ngOnInit() {
-        this.appNavService.navClose(true);
-
         //on route change, set params in projectsServer so our parent component can make use of it
         this.sub = this.route.params.subscribe(params => {
             this.projectsService.setParams(params);
 
             this.selectedId = +params["id"];
+            this.appNavService.navClose(this.selectedId > -1);
         });
     }
 

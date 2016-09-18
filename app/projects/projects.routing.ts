@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProjectsComponent} from "./projects.component";
 import {ProjectsDetailComponent} from "./projectsDetail.component";
+import {ProjectsResolve} from "./projectsResolve.service";
 
 const projectsRoutes:Routes = [
     {
@@ -12,7 +13,10 @@ const projectsRoutes:Routes = [
                 path: ':id',
                 component: ProjectsDetailComponent
             }
-        ]
+        ],
+        resolve: {
+            projects: ProjectsResolve
+        }
     }
 ];
 

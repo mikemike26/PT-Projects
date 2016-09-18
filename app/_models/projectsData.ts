@@ -44,10 +44,14 @@ export class ProjectsData {
 
     }
 
-    getProjects(callback) {
-        setTimeout(() => {
-            callback(this.createProjects(this.dummyProjects));
-        }, 500);
+    getProjects() {
+        let dummyProjects = this.createProjects(this.dummyProjects);
+
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(dummyProjects);
+            }, 500);
+        });
 
     }
     
