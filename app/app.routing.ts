@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { OverviewComponent } from "./overview/overview.component";
 import { ActionsComponent } from './actions/actions.component';
 import { PeopleComponent } from "./people/people.component";
-import { ProjectsComponent } from "./projects/projects.component";
 import { ReportingComponent } from "./reporting/reporting.component";
 import { TasksComponent } from "./tasks/tasks.component";
 import { PageNotFoundComponent } from "./pageNotFound.component";

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Resolve} from '@angular/router';
-import {Project} from "./_classes/project";
 import {ProjectsService} from "./projects.service";
-import {ProjectsData} from "../_models/projectsData";
+import {Project} from "../../_classes/project";
+import {ProjectsData} from "../../_models/projectsData";
 
 @Injectable()
 export class ProjectsResolve implements Resolve<Project> {

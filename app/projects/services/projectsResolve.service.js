@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var projects_service_1 = require("./projects.service");
-var projectsData_1 = require("../_models/projectsData");
+var projectsData_1 = require("../../_models/projectsData");
 var ProjectsResolve = (function () {
     function ProjectsResolve(projectsService, projectsData) {
         this.projectsService = projectsService;
@@ -27,10 +27,9 @@ var ProjectsResolve = (function () {
     };
     ProjectsResolve = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [projects_service_1.ProjectsService, (typeof (_a = typeof projectsData_1.ProjectsData !== 'undefined' && projectsData_1.ProjectsData) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [projects_service_1.ProjectsService, projectsData_1.ProjectsData])
     ], ProjectsResolve);
     return ProjectsResolve;
-    var _a;
 }());
 exports.ProjectsResolve = ProjectsResolve;
 //# sourceMappingURL=projectsResolve.service.js.map
