@@ -24,12 +24,13 @@ var ProjectsDetailComponent = (function () {
         //on route change, set params in projectsServer so our parent component can make use of it
         this.sub = this.route.params.subscribe(function (params) {
             _this.projectsService.setParams(params);
+            _this.selectedId = +params["id"];
         });
     };
     ProjectsDetailComponent = __decorate([
         core_1.Component({
             selector: 'projects-detail',
-            template: "\n      <h1><i class=\"material-icons\">&#xE8DF;</i> Projects Details</h1>\n      \n    ",
+            template: "\n      <div class=\"detail-wrapper\" *ngIf=\"selectedId > -1\">\n        <h1><i class=\"material-icons\">&#xE8DF;</i> Projects Details</h1>\n      </div>\n    ",
             styles: ["\n        :host {\n            display: block;\n        }\n        \n    "]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])

@@ -21,7 +21,7 @@ import {AppNavService} from "./appNav.service";
                 <a href routerLink="/actions" routerLinkActive="active"><i class="material-icons">&#xE160;</i> Actions</a>
             </div>
             <div class="nav-group">
-                <a href routerLink="/projects/details/-1" routerLinkActive="active"><i class="material-icons">&#xE8DF;</i> Projects</a>
+                <a href routerLink="/projects/-1" routerLinkActive="active"><i class="material-icons">&#xE8DF;</i> Projects</a>
                 <a href routerLink="/people" routerLinkActive="active"><i class="material-icons">&#xE7FB;</i> People</a>
                 <a href routerLink="/reporting" routerLinkActive="active"><i class="material-icons">&#xE6E1;</i> Reporting</a>
             </div>

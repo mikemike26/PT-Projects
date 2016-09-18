@@ -6,8 +6,9 @@ import {AppNavService} from "../appNav.service";
 @Component({
     selector: 'projects-detail',
     template: `
-      <h1><i class="material-icons">&#xE8DF;</i> Projects Details</h1>
-      
+      <div class="detail-wrapper" *ngIf="selectedId > -1">
+        <h1><i class="material-icons">&#xE8DF;</i> Projects Details</h1>
+      </div>
     `,
     styles: [`
         :host {
@@ -20,6 +21,8 @@ import {AppNavService} from "../appNav.service";
 export class ProjectsDetailComponent {
     private sub: any;
 
+    selectedId: number;
+
     constructor(private route: ActivatedRoute, private projectsService: ProjectsService, private appNavService: AppNavService) {
 
     }
@@ -30,6 +33,8 @@ export class ProjectsDetailComponent {
         //on route change, set params in projectsServer so our parent component can make use of it
         this.sub = this.route.params.subscribe(params => {
             this.projectsService.setParams(params);
+
+            this.selectedId = +params["id"];
         });
     }
 

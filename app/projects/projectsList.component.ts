@@ -75,7 +75,7 @@ export class ProjectsListComponent {
     selectProject(project: Project) {
         this.appNavService.navClose(true);
         this.selectedId = project.id;
-        this.router.navigate(['/projects/details', project.id]);
+        this.router.navigate(['/projects', project.id]);
     }
 
     ngOnDestroy() {

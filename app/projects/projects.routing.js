@@ -8,7 +8,7 @@ var projectsRoutes = [
         component: projects_component_1.ProjectsComponent,
         children: [
             {
-                path: 'details/:id',
+                path: ':id',
                 component: projectsDetail_component_1.ProjectsDetailComponent
             }
         ]

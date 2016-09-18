@@ -38,19 +38,14 @@ const appRoutes:Routes = [
             title: 'Actions'
         }
     },
+    //set redirect instead of component for an abstract route that has children
     {
         path: 'projects',
-        component: ProjectsComponent,
-        data: {
-            title: 'Projects'
-        }
+        redirectTo: '/projects/-1'
     },
     {
         path: 'people',
-        component: PeopleComponent,
-        data: {
-            title: 'People'
-        }
+        component: PeopleComponent
     },
     {
         path: 'reporting',

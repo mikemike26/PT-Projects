@@ -35,7 +35,7 @@ var ProjectsListComponent = (function () {
     ProjectsListComponent.prototype.selectProject = function (project) {
         this.appNavService.navClose(true);
         this.selectedId = project.id;
-        this.router.navigate(['/projects/details', project.id]);
+        this.router.navigate(['/projects', project.id]);
     };
     ProjectsListComponent.prototype.ngOnDestroy = function () {
         // prevent memory leak when component destroyed
