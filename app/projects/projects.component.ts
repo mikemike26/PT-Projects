@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ProjectsService} from "./projects.service";
 
 @Component({
     selector: 'projects',
@@ -23,6 +24,9 @@ import { Component } from '@angular/core';
             width: 100%;
             height: 100%;
             position: relative;
+        }
+        h1 {
+            width: 10.7em;
         }
         .material-icons {
             color: #666666;

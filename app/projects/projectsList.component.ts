@@ -20,8 +20,8 @@ import {Subscription} from "rxjs/Subscription";
         :host {
             display: block;
             position: absolute;
-            top: 7.3em;
-            bottom: 1.5em;
+            top: 8.3em;
+            bottom: 0;
             overflow: auto;
             padding: 0.7em 1em 1em 0;
         }
@@ -29,6 +29,9 @@ import {Subscription} from "rxjs/Subscription";
             margin-bottom: 1em;
             min-height: 5em;
             cursor: pointer;
+        }
+        .mdl-card__title {
+            padding-bottom: 0;
         }
         .mdl-card.selected {
             box-shadow: 5px 6px 9px 0 rgba(0, 0, 0, .5);
@@ -45,21 +48,28 @@ import {Subscription} from "rxjs/Subscription";
 export class ProjectsListComponent {
     projects: Project[];
     selectedId: number;
-    private sub: Subscription;
+    private sub1: Subscription;
+    private sub2: Subscription;
 
-    constructor(private projectsData: ProjectsData, 
-                private router: Router, 
+    constructor(private router: Router, 
                 private appNavService: AppNavService,
                 private projectsService: ProjectsService) {
 
         //we set the route params in our projectsService to bootstrap them up from the child
-        this.sub = projectsService.projectParams$.subscribe(projectsParams => {
+        this.sub1 = projectsService.projectParams$.subscribe(projectsParams => {
             this.selectedId = +projectsParams.id;
+        });
+        
+        //we want to bind to our projects model in case it changes from a different location
+        this.sub2 = projectsService.projects$.subscribe(projects => {
+            console.log(projects);
+            this.projects = projects;
         });
     }
 
     ngOnInit() {
-        this.projects = this.projectsData.getProjects();
+        console.log("INIT!!");
+        this.projectsService.fetchProjects();
     }
 
     selectProject(project: Project) {
@@ -70,6 +80,7 @@ export class ProjectsListComponent {
 
     ngOnDestroy() {
         // prevent memory leak when component destroyed
-        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+        this.sub2.unsubscribe();
     }
 }

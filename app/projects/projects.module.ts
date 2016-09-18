@@ -8,7 +8,6 @@ import {PtLimitWordsDirective} from "../_utilities/ptLimitWords.directive";
 import {projectsRouting} from "./projects.routing";
 import {ProjectsDetailComponent} from "./projectsDetail.component";
 import {ProjectsData} from "../_models/projectsData";
-import {ProjectsService} from "./projects.service";
 
 @NgModule({
     imports: [

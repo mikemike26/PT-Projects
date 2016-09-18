@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectsService} from "./projects.service";
+import {AppNavService} from "../appNav.service";
 
 @Component({
     selector: 'projects-detail',
@@ -19,11 +20,14 @@ import {ProjectsService} from "./projects.service";
 export class ProjectsDetailComponent {
     private sub: any;
 
-    constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {
+    constructor(private route: ActivatedRoute, private projectsService: ProjectsService, private appNavService: AppNavService) {
 
     }
 
     ngOnInit() {
+        this.appNavService.navClose(true);
+
+        //on route change, set params in projectsServer so our parent component can make use of it
         this.sub = this.route.params.subscribe(params => {
             this.projectsService.setParams(params);
         });

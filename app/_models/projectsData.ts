@@ -44,8 +44,11 @@ export class ProjectsData {
 
     }
 
-    getProjects() {
-        return this.createProjects(this.dummyProjects);
+    getProjects(callback) {
+        setTimeout(() => {
+            callback(this.createProjects(this.dummyProjects));
+        }, 500);
+
     }
     
     private createProjects(projects):Project[] {

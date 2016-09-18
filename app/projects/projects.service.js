@@ -10,20 +10,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
+var projectsData_1 = require("../_models/projectsData");
 var ProjectsService = (function () {
-    function ProjectsService() {
+    function ProjectsService(projectsData) {
+        this.projectsData = projectsData;
+        //=========================== Projects route param observer ===================================
         // Observable string sources
         this.projectsParams = new Subject_1.Subject();
         // Observable string streams
         this.projectParams$ = this.projectsParams.asObservable();
+        //=========================== Projects data observer ===================================
+        // Observable string sources
+        this.projectsObs = new Subject_1.Subject();
+        // Observable string streams
+        this.projects$ = this.projectsObs.asObservable();
     }
+    ProjectsService.prototype.getProject = function (id) {
+        return this.projects[id];
+    };
     // Service message commands
     ProjectsService.prototype.setParams = function (projectsParams) {
         this.projectsParams.next(projectsParams);
     };
+    // getch projects from our model
+    ProjectsService.prototype.fetchProjects = function () {
+        var _this = this;
+        this.projectsData.getProjects(function (data) {
+            _this.projects = data;
+            _this.projectsObs.next(data);
+        });
+    };
     ProjectsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [projectsData_1.ProjectsData])
     ], ProjectsService);
     return ProjectsService;
 }());

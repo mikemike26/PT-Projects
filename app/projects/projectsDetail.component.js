@@ -11,13 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var projects_service_1 = require("./projects.service");
+var appNav_service_1 = require("../appNav.service");
 var ProjectsDetailComponent = (function () {
-    function ProjectsDetailComponent(route, projectsService) {
+    function ProjectsDetailComponent(route, projectsService, appNavService) {
         this.route = route;
         this.projectsService = projectsService;
+        this.appNavService = appNavService;
     }
     ProjectsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.appNavService.navClose(true);
+        //on route change, set params in projectsServer so our parent component can make use of it
         this.sub = this.route.params.subscribe(function (params) {
             _this.projectsService.setParams(params);
         });
@@ -28,7 +32,7 @@ var ProjectsDetailComponent = (function () {
             template: "\n      <h1><i class=\"material-icons\">&#xE8DF;</i> Projects Details</h1>\n      \n    ",
             styles: ["\n        :host {\n            display: block;\n        }\n        \n    "]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])
     ], ProjectsDetailComponent);
     return ProjectsDetailComponent;
 }());
