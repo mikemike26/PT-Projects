@@ -37,6 +37,7 @@ import {ProjectsService} from "../services/projects.service";
             top: 0;
             right: 0;
             bottom: 0;
+            padding: 1em;
         }
     `]
 })

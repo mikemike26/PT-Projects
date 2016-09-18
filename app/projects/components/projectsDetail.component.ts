@@ -8,24 +8,26 @@ import {AppNavService} from "../../appNav.service";
     selector: 'projects-detail',
     template: `
       <div class="detail-wrapper" *ngIf="selectedId > -1">
-        <h1><i class="material-icons">&#xE8DF;</i> {{project.title}}</h1>
+        <pt-text-input name="Title" placeHolder="Title" [(output)]="project.title"></pt-text-input>
       </div>
     `,
     styles: [`
         :host {
             display: block;
         }
-        
+        .overview {
+            width: 100%;
+        }
     `]
 })
 
 export class ProjectsDetailComponent {
-    private sub: any;
+    private sub:any;
 
-    selectedId: number;
-    project: Project;
+    selectedId:number;
+    project:Project;
 
-    constructor(private route: ActivatedRoute, private projectsService: ProjectsService, private appNavService: AppNavService) {
+    constructor(private route:ActivatedRoute, private projectsService:ProjectsService, private appNavService:AppNavService) {
 
     }
 
@@ -38,7 +40,6 @@ export class ProjectsDetailComponent {
             this.appNavService.navClose(this.selectedId > -1);
 
             this.project = this.projectsService.getProject(this.selectedId);
-            console.log(this.project);
         });
     }
 

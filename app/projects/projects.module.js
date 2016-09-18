@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require('@angular/forms');
 var utilities_module_1 = require("../_utilities/utilities.module");
 var ptLimitWords_directive_1 = require("../_utilities/ptLimitWords.directive");
 var projects_routing_1 = require("./projects.routing");
@@ -19,6 +20,7 @@ var projectsList_component_1 = require("./components/projectsList.component");
 var projectsDetail_component_1 = require("./components/projectsDetail.component");
 var projects_service_1 = require("./services/projects.service");
 var projectsResolve_service_1 = require("./services/projectsResolve.service");
+var ptTextInput_component_1 = require("../_utilities/components/ptTextInput.component");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
@@ -27,13 +29,15 @@ var ProjectsModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 utilities_module_1.UtilitiesModule,
-                projects_routing_1.projectsRouting
+                projects_routing_1.projectsRouting,
+                forms_1.FormsModule
             ],
             declarations: [
                 projects_component_1.ProjectsComponent,
                 projectsList_component_1.ProjectsListComponent,
                 ptLimitWords_directive_1.PtLimitWordsDirective,
-                projectsDetail_component_1.ProjectsDetailComponent
+                projectsDetail_component_1.ProjectsDetailComponent,
+                ptTextInput_component_1.PtTextInputComponent
             ],
             providers: [projectsData_1.ProjectsData, projects_service_1.ProjectsService, projectsResolve_service_1.ProjectsResolve]
         }), 
