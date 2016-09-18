@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
-var projectsData_1 = require("../_models/projectsData");
+var _ = require('lodash');
+var projectsData_1 = require("../../_models/projectsData");
 var ProjectsService = (function () {
     function ProjectsService(projectsData) {
         this.projectsData = projectsData;
@@ -26,7 +27,7 @@ var ProjectsService = (function () {
         this.projects$ = this.projectsObs.asObservable();
     }
     ProjectsService.prototype.getProject = function (id) {
-        return this.projects[id];
+        return _.find(this.projects, { id: id });
     };
     ProjectsService.prototype.getProjects = function () {
         return this.projects;

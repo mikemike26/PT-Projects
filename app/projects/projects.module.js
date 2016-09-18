@@ -8,17 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var projects_component_1 = require("./projects.component");
-var projectsList_component_1 = require("./projectsList.component");
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
 var utilities_module_1 = require("../_utilities/utilities.module");
 var ptLimitWords_directive_1 = require("../_utilities/ptLimitWords.directive");
 var projects_routing_1 = require("./projects.routing");
-var projectsDetail_component_1 = require("./projectsDetail.component");
 var projectsData_1 = require("../_models/projectsData");
-var projects_service_1 = require("./projects.service");
-var projectsResolve_service_1 = require("./projectsResolve.service");
+var projects_component_1 = require("./components/projects.component");
+var projectsList_component_1 = require("./components/projectsList.component");
+var projectsDetail_component_1 = require("./components/projectsDetail.component");
+var projects_service_1 = require("./services/projects.service");
+var projectsResolve_service_1 = require("./services/projectsResolve.service");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }

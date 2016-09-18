@@ -1,8 +1,8 @@
 "use strict";
 var router_1 = require('@angular/router');
-var projects_component_1 = require("./projects.component");
-var projectsDetail_component_1 = require("./projectsDetail.component");
-var projectsResolve_service_1 = require("./projectsResolve.service");
+var projects_component_1 = require("./components/projects.component");
+var projectsDetail_component_1 = require("./components/projectsDetail.component");
+var projectsResolve_service_1 = require("./services/projectsResolve.service");
 var projectsRoutes = [
     {
         path: 'projects',

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import {Project} from "../projects/_classes/project";
-import {ProjectFactory} from "../projects/_classes/projectFactory";
+import {Project} from "../_classes/project";
+import {ProjectFactory} from "../_classes/projectFactory";
 
 @Injectable()
 export class ProjectsData {

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {Project} from "./_classes/project";
 import {Router} from '@angular/router';
-import {AppNavService} from "../appNav.service";
-import {ProjectsService} from "./projects.service";
 import {Subscription} from "rxjs/Subscription";
+import {Project} from "../../_classes/project";
+import {AppNavService} from "../../appNav.service";
+import {ProjectsService} from "../services/projects.service";
 
 @Component({
     selector: 'projects-list',

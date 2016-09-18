@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-import {Project} from "./_classes/project";
-import {ProjectsData} from "../_models/projectsData";
+import * as _ from 'lodash';
+import {Project} from "../../_classes/project";
+import {ProjectsData} from "../../_models/projectsData";
 
 @Injectable()
 export class ProjectsService {
@@ -12,7 +13,7 @@ export class ProjectsService {
     }
     
     getProject(id) {
-        return this.projects[id];
+        return _.find(this.projects, {id: id});
     }
     
     getProjects() {

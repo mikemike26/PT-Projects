@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var projects_service_1 = require("./projects.service");
-var appNav_service_1 = require("../appNav.service");
+var projects_service_1 = require("../services/projects.service");
+var appNav_service_1 = require("../../appNav.service");
 var ProjectsDetailComponent = (function () {
     function ProjectsDetailComponent(route, projectsService, appNavService) {
         this.route = route;
@@ -25,12 +25,14 @@ var ProjectsDetailComponent = (function () {
             _this.projectsService.setParams(params);
             _this.selectedId = +params["id"];
             _this.appNavService.navClose(_this.selectedId > -1);
+            _this.project = _this.projectsService.getProject(_this.selectedId);
+            console.log(_this.project);
         });
     };
     ProjectsDetailComponent = __decorate([
         core_1.Component({
             selector: 'projects-detail',
-            template: "\n      <div class=\"detail-wrapper\" *ngIf=\"selectedId > -1\">\n        <h1><i class=\"material-icons\">&#xE8DF;</i> Projects Details</h1>\n      </div>\n    ",
+            template: "\n      <div class=\"detail-wrapper\" *ngIf=\"selectedId > -1\">\n        <h1><i class=\"material-icons\">&#xE8DF;</i> {{project.title}}</h1>\n      </div>\n    ",
             styles: ["\n        :host {\n            display: block;\n        }\n        \n    "]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])

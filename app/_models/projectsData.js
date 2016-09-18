@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var projectFactory_1 = require("../projects/_classes/projectFactory");
+var projectFactory_1 = require("../_classes/projectFactory");
 var ProjectsData = (function () {
     function ProjectsData(http) {
         this.http = http;

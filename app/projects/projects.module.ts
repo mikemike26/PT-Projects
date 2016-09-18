@@ -1,15 +1,15 @@
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
 
-import {ProjectsComponent} from "./projects.component";
-import {ProjectsListComponent} from "./projectsList.component";
 import {UtilitiesModule} from "../_utilities/utilities.module";
 import {PtLimitWordsDirective} from "../_utilities/ptLimitWords.directive";
 import {projectsRouting} from "./projects.routing";
-import {ProjectsDetailComponent} from "./projectsDetail.component";
 import {ProjectsData} from "../_models/projectsData";
-import {ProjectsService} from "./projects.service";
-import {ProjectsResolve} from "./projectsResolve.service";
+import {ProjectsComponent} from "./components/projects.component";
+import {ProjectsListComponent} from "./components/projectsList.component";
+import {ProjectsDetailComponent} from "./components/projectsDetail.component";
+import {ProjectsService} from "./services/projects.service";
+import {ProjectsResolve} from "./services/projectsResolve.service";
 
 @NgModule({
     imports: [

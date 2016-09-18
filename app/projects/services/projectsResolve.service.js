@@ -27,9 +27,10 @@ var ProjectsResolve = (function () {
     };
     ProjectsResolve = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [projects_service_1.ProjectsService, projectsData_1.ProjectsData])
+        __metadata('design:paramtypes', [projects_service_1.ProjectsService, (typeof (_a = typeof projectsData_1.ProjectsData !== 'undefined' && projectsData_1.ProjectsData) === 'function' && _a) || Object])
     ], ProjectsResolve);
     return ProjectsResolve;
+    var _a;
 }());
 exports.ProjectsResolve = ProjectsResolve;
 //# sourceMappingURL=projectsResolve.service.js.map
