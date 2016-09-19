@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ProjectsComponent} from "./projectComponents/projects.component";
-import {ProjectsDetailComponent} from "./projectComponents/projectsDetail.component";
-import {ProjectsResolve} from "./projectServices/projectsResolve.service";
+import {ProjectsComponent} from "./projectsComponents/projects.component";
+import {ProjectsDetailComponent} from "./projectsComponents/projectsDetail.component";
+import {ProjectsResolve} from "./projectsServices/projectsResolve.service";
 
 const projectsRoutes:Routes = [
     {

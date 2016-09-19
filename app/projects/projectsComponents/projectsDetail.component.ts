@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Project} from "../../_classes/project";
-import {ProjectsService} from "../projectServices/projects.service";
+import {ProjectsService} from "../projectsServices/projects.service";
 import {AppNavService} from "../../appServices/appNav.service";
 
 @Component({

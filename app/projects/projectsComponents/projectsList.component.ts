@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Subscription} from "rxjs/Subscription";
 import {Project} from "../../_classes/project";
 import {AppNavService} from "../../appServices/appNav.service";
-import {ProjectsService} from "../projectServices/projects.service";
+import {ProjectsService} from "../projectsServices/projects.service";
 
 @Component({
     selector: 'projects-list',

@@ -15,13 +15,13 @@ var utilities_module_1 = require("../_utilities/utilities.module");
 var ptLimitWords_directive_1 = require("../_utilities/ptLimitWords.directive");
 var projects_routing_1 = require("./projects.routing");
 var projectsData_1 = require("../_models/projectsData");
-var projects_service_1 = require("./projectServices/projects.service");
-var projectsResolve_service_1 = require("./projectServices/projectsResolve.service");
+var projects_service_1 = require("./projectsServices/projects.service");
+var projectsResolve_service_1 = require("./projectsServices/projectsResolve.service");
 var ptTextInput_component_1 = require("../_utilities/components/ptTextInput.component");
 var ptTextArea_component_1 = require("../_utilities/components/ptTextArea.component");
-var projects_component_1 = require("./projectComponents/projects.component");
-var projectsList_component_1 = require("./projectComponents/projectsList.component");
-var projectsDetail_component_1 = require("./projectComponents/projectsDetail.component");
+var projects_component_1 = require("./projectsComponents/projects.component");
+var projectsList_component_1 = require("./projectsComponents/projectsList.component");
+var projectsDetail_component_1 = require("./projectsComponents/projectsDetail.component");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
