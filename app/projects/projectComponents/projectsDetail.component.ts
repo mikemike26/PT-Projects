@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Project} from "../../_classes/project";
-import {ProjectsService} from "../services/projects.service";
-import {AppNavService} from "../../appNav.service";
+import {ProjectsService} from "../projectServices/projects.service";
+import {AppNavService} from "../../appServices/appNav.service";
 
 @Component({
     selector: 'projects-detail',

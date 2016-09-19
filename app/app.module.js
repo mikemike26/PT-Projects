@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var app_routing_1 = require('./app.routing');
 var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
+var app_component_1 = require('./appComponents/app.component');
 var actions_module_1 = require("./actions/actions.module");
 var overview_module_1 = require("./overview/overview.module");
 var people_module_1 = require("./people/people.module");
@@ -20,11 +20,11 @@ var reporting_module_1 = require("./reporting/reporting.module");
 var tasks_module_1 = require("./tasks/tasks.module");
 var pageNotFound_component_1 = require("./pageNotFound.component");
 var utilities_module_1 = require("./_utilities/utilities.module");
-var appNav_component_1 = require("./appNav.component");
-var appHeader_component_1 = require("./appHeader.component");
-var appFooter_component_1 = require("./appFooter.component");
+var appNav_component_1 = require("./appComponents/appNav.component");
+var appHeader_component_1 = require("./appComponents/appHeader.component");
+var appFooter_component_1 = require("./appComponents/appFooter.component");
 var http_1 = require('@angular/http');
-var appNav_service_1 = require("./appNav.service");
+var appNav_service_1 = require("./appServices/appNav.service");
 var AppModule = (function () {
     function AppModule() {
     }

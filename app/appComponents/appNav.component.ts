@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Subscription} from "rxjs/Subscription";
-import {AppNavService} from "./appNav.service";
+import {AppNavService} from "../appServices/appNav.service";
 
 @Component({
     selector: 'app-nav',
@@ -8,7 +8,7 @@ import {AppNavService} from "./appNav.service";
       <nav [class.closed]="menuClosed">
         <div class="nav-header">
            <button class="collapse-btn material-btn" (click)="menuToggle()"><i class="material-icons" [class.hide-element]="menuClosed">&#xE5C4;</i><i class="material-icons" [class.hide-element]="!menuClosed">&#xE5C8;</i></button>
-           <img src="../assets/images/profile-placeholder.png" />
+           <img src="../../assets/images/profile-placeholder.png" />
            <p class="user-name">Mike Rensel</p>
            <p class="user-email">mike.rensel@mktec.com</p>
         </div>

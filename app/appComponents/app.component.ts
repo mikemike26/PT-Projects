@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AppNavService} from "./appNav.service";
+import {AppNavService} from "../appServices/appNav.service";
 import {Subscription} from "rxjs/Subscription";
 
 @Component({
