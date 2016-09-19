@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var PtTextInputComponent = (function () {
     function PtTextInputComponent() {
+        this.outputChange = new core_1.EventEmitter();
     }
     Object.defineProperty(PtTextInputComponent.prototype, "placeHolder", {
         set: function (placeHolder) {
@@ -36,6 +37,9 @@ var PtTextInputComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    PtTextInputComponent.prototype.ngModelChange = function () {
+        this.outputChange.emit(this._ngModel);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String), 
@@ -47,6 +51,10 @@ var PtTextInputComponent = (function () {
         __metadata('design:paramtypes', [Object])
     ], PtTextInputComponent.prototype, "output", null);
     __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], PtTextInputComponent.prototype, "outputChange", void 0);
+    __decorate([
         core_1.Input(), 
         __metadata('design:type', String), 
         __metadata('design:paramtypes', [String])
@@ -54,7 +62,7 @@ var PtTextInputComponent = (function () {
     PtTextInputComponent = __decorate([
         core_1.Component({
             selector: 'pt-text-input',
-            template: "\n       <label class=\"mdl-textfield__label\" [attr.for]=\"_name\">{{_name}}</label>\n       <input type=\"text\" class=\"mdl-textfield__input\" [attr.id]=\"_name\" [(ngModel)]=\"_ngModel\">\n    ",
+            template: "\n       <label class=\"pt-label\" [attr.for]=\"_name\">{{_name}}</label>\n       <input type=\"text\" class=\"pt-input\" [attr.placeholder]=\"_placeHolder\" [attr.id]=\"_name\" [(ngModel)]=\"_ngModel\" (ngModelChange)=\"ngModelChange()\">\n    ",
             styles: ["\n        :host {\n            display: block;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
