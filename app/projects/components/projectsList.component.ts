@@ -10,7 +10,7 @@ import {ProjectsService} from "../services/projects.service";
     template: `
       <div class="demo-card-wide mdl-card mdl-shadow--2dp" *ngFor="let project of projects" (click)="selectProject(project)" [class.selected]="selectedId === project.id">
           <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text"><i class="material-icons">&#xE8DF;</i> {{project.title}}</h2>
+            <h2 class="mdl-card__title-text"><i class="material-icons" *ngIf="project.title.length > 0">&#xE8DF;</i> {{project.title}}</h2>
           </div>
           <div class="mdl-card__supporting-text" [ptLimitWords]="project.description" limit="20"></div>
       </div>
