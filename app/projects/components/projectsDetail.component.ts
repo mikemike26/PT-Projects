@@ -8,7 +8,7 @@ import {AppNavService} from "../../appNav.service";
     selector: 'projects-detail',
     template: `
       <div class="detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp" *ngIf="selectedId > -1">
-        <div class="input-group primary">
+        <div class="input-group">
             <pt-text-input class="input" id="title" name="Title" (keydown)="updateField($event, 'title')" (blur)="updateNow($event, 'title')" [(output)]="project.title"></pt-text-input>
             <pt-text-area class="input" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
         </div> 
