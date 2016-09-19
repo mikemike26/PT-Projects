@@ -1,14 +1,16 @@
 export class Project {
     id: number;
     title: string;
-    status: string;
     description: string;
+
+    status: string;
+    owner: string;
+    members: any;
     startDate: Date;
     endDate: Date;
+
     tasks: any;
     issues: any;
-    members: any;
-    owner: string;
     milestones: any;
     
     constructor(project: any) {
