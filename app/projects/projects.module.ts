@@ -11,6 +11,7 @@ import {ProjectsDetailComponent} from "./components/projectsDetail.component";
 import {ProjectsService} from "./services/projects.service";
 import {ProjectsResolve} from "./services/projectsResolve.service";
 import {PtTextInputComponent} from "../_utilities/components/ptTextInput.component";
+import {PtTextAreaComponent} from "../_utilities/components/ptTextArea.component";
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import {PtTextInputComponent} from "../_utilities/components/ptTextInput.compone
         ProjectsListComponent,
         PtLimitWordsDirective,
         ProjectsDetailComponent,
-        PtTextInputComponent
+        PtTextInputComponent,
+        PtTextAreaComponent
     ],
     providers: [ProjectsData, ProjectsService, ProjectsResolve]
 })

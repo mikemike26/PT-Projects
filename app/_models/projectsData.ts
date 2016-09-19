@@ -43,6 +43,16 @@ export class ProjectsData {
 
     }
 
+    private createProjects(projects):Project[] {
+        let output = [];
+
+        for(let a=0, b=projects.length; a<b; a++) {
+            output.push(ProjectFactory.createProject(projects[a]));
+        }
+
+        return output;
+    }
+    
     getProjects() {
         let dummyProjects = this.createProjects(this.dummyProjects);
 
@@ -54,13 +64,5 @@ export class ProjectsData {
 
     }
     
-    private createProjects(projects):Project[] {
-        let output = [];
-        
-        for(let a=0, b=projects.length; a<b; a++) {
-            output.push(ProjectFactory.createProject(projects[a]));
-        }
 
-        return output;
-    }
 }

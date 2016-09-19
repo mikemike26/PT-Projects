@@ -7,27 +7,40 @@ import {AppNavService} from "../../appNav.service";
 @Component({
     selector: 'projects-detail',
     template: `
-      <div class="detail-wrapper" *ngIf="selectedId > -1">
-        <pt-text-input name="Title" placeHolder="Title" [(output)]="project.title"></pt-text-input>
+      <div class="detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp" *ngIf="selectedId > -1">
+        <div class="input-group primary">
+            <pt-text-input class="input" id="title" name="Title" (keydown)="updateField($event, 'title')" (blur)="updateNow($event, 'title')" [(output)]="project.title"></pt-text-input>
+            <pt-text-area class="input" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
+        </div> 
       </div>
     `,
     styles: [`
         :host {
             display: block;
         }
-        .overview {
+        .detail-wrapper {
+            padding: 1em;
+        }
+        .detail-wrapper.primary {
             width: 100%;
+        }
+        .primary .input {
+            display: block;
         }
     `]
 })
 
 export class ProjectsDetailComponent {
-    private sub:any;
+    private hasUpdated: boolean = false;
+    private sub: any;
+    private timer: any;
 
-    selectedId:number;
-    project:Project;
+    selectedId: number;
+    project: Project;
 
-    constructor(private route:ActivatedRoute, private projectsService:ProjectsService, private appNavService:AppNavService) {
+    constructor(private route:ActivatedRoute,
+                private projectsService:ProjectsService,
+                private appNavService:AppNavService) {
 
     }
 
@@ -41,6 +54,29 @@ export class ProjectsDetailComponent {
 
             this.project = this.projectsService.getProject(this.selectedId);
         });
+    }
+
+    //debounced update
+    updateField(e, field) {
+        this.hasUpdated = false;
+
+        //keycode 9 === tab
+        if(e.keyCode !== 9) {
+            clearTimeout(this.timer);
+            this.timer = setTimeout(() => {
+                this.hasUpdated = true;
+
+                console.log("SENDING "+ field.toUpperCase());
+            }, 500);
+        }
+    }
+
+    //immediate update
+    updateNow(e, field) {
+        if(!this.hasUpdated) {
+            clearTimeout(this.timer);
+            console.log("SENDING NOW!! "+ field.toUpperCase());
+        }
     }
 
 }

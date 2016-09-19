@@ -9,24 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var utilities_service_1 = require("./utilities.service");
-var UtilitiesModule = (function () {
-    function UtilitiesModule() {
+var UtilitiesService = (function () {
+    function UtilitiesService() {
     }
-    UtilitiesModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                platform_browser_1.BrowserModule,
-                forms_1.FormsModule
-            ],
-            declarations: [],
-            providers: [utilities_service_1.UtilitiesService]
-        }), 
+    //adapter method for the various new implementations of getting the key code on keydown or keyup events
+    UtilitiesService.prototype.getKeyCode = function (event) {
+        var code;
+        if (event.keyCode !== undefined) {
+            code = event.keyCode;
+        }
+        else if (event.key !== undefined) {
+            code = event.key;
+        }
+        else if (event.keyIdentifier !== undefined) {
+            code = event.keyIdentifier;
+        }
+        return code;
+    };
+    UtilitiesService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], UtilitiesModule);
-    return UtilitiesModule;
+    ], UtilitiesService);
+    return UtilitiesService;
 }());
-exports.UtilitiesModule = UtilitiesModule;
-//# sourceMappingURL=utilities.module.js.map
+exports.UtilitiesService = UtilitiesService;
+//# sourceMappingURL=utilities.service.js.map

@@ -17,6 +17,7 @@ var ProjectsDetailComponent = (function () {
         this.route = route;
         this.projectsService = projectsService;
         this.appNavService = appNavService;
+        this.hasUpdated = false;
     }
     ProjectsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,11 +29,31 @@ var ProjectsDetailComponent = (function () {
             _this.project = _this.projectsService.getProject(_this.selectedId);
         });
     };
+    //debounced update
+    ProjectsDetailComponent.prototype.updateField = function (e, field) {
+        var _this = this;
+        this.hasUpdated = false;
+        //keycode 9 === tab
+        if (e.keyCode !== 9) {
+            clearTimeout(this.timer);
+            this.timer = setTimeout(function () {
+                _this.hasUpdated = true;
+                console.log("SENDING " + field.toUpperCase());
+            }, 500);
+        }
+    };
+    //immediate update
+    ProjectsDetailComponent.prototype.updateNow = function (e, field) {
+        if (!this.hasUpdated) {
+            clearTimeout(this.timer);
+            console.log("SENDING NOW!! " + field.toUpperCase());
+        }
+    };
     ProjectsDetailComponent = __decorate([
         core_1.Component({
             selector: 'projects-detail',
-            template: "\n      <div class=\"detail-wrapper\" *ngIf=\"selectedId > -1\">\n        <pt-text-input name=\"Title\" placeHolder=\"Title\" [(output)]=\"project.title\"></pt-text-input>\n      </div>\n    ",
-            styles: ["\n        :host {\n            display: block;\n        }\n        .overview {\n            width: 100%;\n        }\n    "]
+            template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group primary\">\n            <pt-text-input class=\"input\" id=\"title\" name=\"Title\" (keydown)=\"updateField($event, 'title')\" (blur)=\"updateNow($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n            <pt-text-area class=\"input\" id=\"description\" name=\"Description\" (keydown)=\"updateField($event, 'description')\" (blur)=\"updateNow($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div> \n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n        }\n        .detail-wrapper {\n            padding: 1em;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])
     ], ProjectsDetailComponent);

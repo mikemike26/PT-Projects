@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ProjectsService} from "../services/projects.service";
 
 @Component({
@@ -14,7 +14,7 @@ import {ProjectsService} from "../services/projects.service";
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" (click)="deleteProject()">Are you sure?</button>
       </div>
       <projects-list></projects-list>
-      <div class="projects-view">
+      <div class="projects-view"> 
           <router-outlet></router-outlet>
       </div>
     `,

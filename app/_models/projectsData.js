@@ -48,6 +48,13 @@ var ProjectsData = (function () {
             }
         ];
     }
+    ProjectsData.prototype.createProjects = function (projects) {
+        var output = [];
+        for (var a = 0, b = projects.length; a < b; a++) {
+            output.push(projectFactory_1.ProjectFactory.createProject(projects[a]));
+        }
+        return output;
+    };
     ProjectsData.prototype.getProjects = function () {
         var dummyProjects = this.createProjects(this.dummyProjects);
         return new Promise(function (resolve, reject) {
@@ -55,13 +62,6 @@ var ProjectsData = (function () {
                 resolve(dummyProjects);
             }, 500);
         });
-    };
-    ProjectsData.prototype.createProjects = function (projects) {
-        var output = [];
-        for (var a = 0, b = projects.length; a < b; a++) {
-            output.push(projectFactory_1.ProjectFactory.createProject(projects[a]));
-        }
-        return output;
     };
     ProjectsData = __decorate([
         core_1.Injectable(), 
