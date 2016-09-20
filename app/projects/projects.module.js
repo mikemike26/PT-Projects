@@ -22,6 +22,7 @@ var ptTextArea_component_1 = require("../_utilities/components/ptTextArea.compon
 var projects_component_1 = require("./projectsComponents/projects.component");
 var projectsList_component_1 = require("./projectsComponents/projectsList.component");
 var projectsDetail_component_1 = require("./projectsComponents/projectsDetail.component");
+var projectsNoSelectComponent_1 = require("./projectsComponents/projectsNoSelectComponent");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
@@ -39,7 +40,8 @@ var ProjectsModule = (function () {
                 ptLimitWords_directive_1.PtLimitWordsDirective,
                 projectsDetail_component_1.ProjectsDetailComponent,
                 ptTextInput_component_1.PtTextInputComponent,
-                ptTextArea_component_1.PtTextAreaComponent
+                ptTextArea_component_1.PtTextAreaComponent,
+                projectsNoSelectComponent_1.ProjectsNoSelectComponent
             ],
             providers: [projectsData_1.ProjectsData, projects_service_1.ProjectsService, projectsResolve_service_1.ProjectsResolve]
         }), 

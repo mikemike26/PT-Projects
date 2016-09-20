@@ -12,6 +12,7 @@ import {PtTextAreaComponent} from "../_utilities/components/ptTextArea.component
 import {ProjectsComponent} from "./projectsComponents/projects.component";
 import {ProjectsListComponent} from "./projectsComponents/projectsList.component";
 import {ProjectsDetailComponent} from "./projectsComponents/projectsDetail.component";
+import {ProjectsNoSelectComponent} from "./projectsComponents/projectsNoSelectComponent";
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import {ProjectsDetailComponent} from "./projectsComponents/projectsDetail.compo
         PtLimitWordsDirective,
         ProjectsDetailComponent,
         PtTextInputComponent,
-        PtTextAreaComponent
+        PtTextAreaComponent,
+        ProjectsNoSelectComponent
     ],
     providers: [ProjectsData, ProjectsService, ProjectsResolve]
 })

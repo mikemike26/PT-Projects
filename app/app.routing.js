@@ -9,36 +9,19 @@ var pageNotFound_component_1 = require("./pageNotFound.component");
 var appRoutes = [
     {
         path: '',
-        component: overview_component_1.OverviewComponent,
-        data: {
-            title: 'Overview'
-        }
+        component: overview_component_1.OverviewComponent
     },
     {
         path: 'overview',
-        component: overview_component_1.OverviewComponent,
-        data: {
-            title: 'Overview'
-        }
+        component: overview_component_1.OverviewComponent
     },
     {
         path: 'tasks',
-        component: tasks_component_1.TasksComponent,
-        data: {
-            title: 'Taks'
-        }
+        component: tasks_component_1.TasksComponent
     },
     {
         path: 'actions',
-        component: actions_component_1.ActionsComponent,
-        data: {
-            title: 'Actions'
-        }
-    },
-    //set redirect instead of component for an abstract route that has children
-    {
-        path: 'projects',
-        redirectTo: '/projects/-1'
+        component: actions_component_1.ActionsComponent
     },
     {
         path: 'people',
@@ -46,17 +29,11 @@ var appRoutes = [
     },
     {
         path: 'reporting',
-        component: reporting_component_1.ReportingComponent,
-        data: {
-            title: 'Reporting'
-        }
+        component: reporting_component_1.ReportingComponent
     },
     {
         path: '**',
-        component: pageNotFound_component_1.PageNotFoundComponent,
-        data: {
-            title: 'Oops'
-        }
+        component: pageNotFound_component_1.PageNotFoundComponent
     }
 ];
 exports.appRoutingProviders = [];

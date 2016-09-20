@@ -11,36 +11,19 @@ import { PageNotFoundComponent } from "./pageNotFound.component";
 const appRoutes:Routes = [
     {
         path: '',
-        component: OverviewComponent,
-        data: {
-            title: 'Overview'
-        }
+        component: OverviewComponent
     },
     {
         path: 'overview',
-        component: OverviewComponent,
-        data: {
-            title: 'Overview'
-        }
+        component: OverviewComponent
     },
     {
         path: 'tasks',
-        component: TasksComponent,
-        data: {
-            title: 'Taks'
-        }
+        component: TasksComponent
     },
     {
         path: 'actions',
-        component: ActionsComponent,
-        data: {
-            title: 'Actions'
-        }
-    },
-    //set redirect instead of component for an abstract route that has children
-    {
-        path: 'projects',
-        redirectTo: '/projects/-1'
+        component: ActionsComponent
     },
     {
         path: 'people',
@@ -48,17 +31,11 @@ const appRoutes:Routes = [
     },
     {
         path: 'reporting',
-        component: ReportingComponent,
-        data: {
-            title: 'Reporting'
-        }
+        component: ReportingComponent
     },
     {
         path: '**',
-        component: PageNotFoundComponent,
-        data: {
-            title: 'Oops'
-        }
+        component: PageNotFoundComponent
     }
 ];
 
