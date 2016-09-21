@@ -9,34 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var UserData = (function () {
-    function UserData(http) {
-        this.http = http;
-        this.UserUrl = "";
-        this.dummyUser = [
-            {
-                id: 0,
-                first: "Mike",
-                last: "Rensel",
-                email: "mike.rensel@mkte.com",
-                image: "../assets/images/profile-placeholder.png",
-                department: "isg",
-                level: "0"
-            }
-        ];
+var GlobalService = (function () {
+    function GlobalService() {
     }
-    UserData.prototype.getuser = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            resolve(_this.dummyUser[0]);
-        });
+    //we're eventually going to set the user as a result of logging in, this can remain fudged for now
+    GlobalService.prototype.setUser = function (user) {
+        this.user = user;
     };
-    UserData = __decorate([
+    GlobalService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], UserData);
-    return UserData;
+        __metadata('design:paramtypes', [])
+    ], GlobalService);
+    return GlobalService;
 }());
-exports.UserData = UserData;
-//# sourceMappingURL=userData.js.map
+exports.GlobalService = GlobalService;
+//# sourceMappingURL=global.service.js.map

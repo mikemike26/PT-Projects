@@ -15,6 +15,9 @@ import {AppHeader} from "./appComponents/appHeader.component";
 import {AppFooter} from "./appComponents/appFooter.component";
 import { HttpModule } from '@angular/http';
 import {AppNavService} from "./appServices/appNav.service";
+import {AppService} from "./appServices/app.service";
+import {GlobalService} from "./appServices/global.service";
+import {UserData} from "./_models/userData";
 
 @NgModule({
     imports: [
@@ -38,7 +41,10 @@ import {AppNavService} from "./appServices/appNav.service";
     ],
     providers: [
         appRoutingProviders,
-        AppNavService
+        AppNavService,
+        AppService,
+        GlobalService,
+        UserData
     ],
     bootstrap: [AppComponent]
 })

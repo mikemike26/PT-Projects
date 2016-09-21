@@ -22,12 +22,11 @@ export class UserData {
 
     }
 
-    getProjects() {
+    getuser() {
 
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(this.dummyUser);
-            }, 500);
+
+            resolve(this.dummyUser[0]);
         });
 
     }

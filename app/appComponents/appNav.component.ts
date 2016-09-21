@@ -1,16 +1,23 @@
 import {Component} from '@angular/core';
 import {Subscription} from "rxjs/Subscription";
 import {AppNavService} from "../appServices/appNav.service";
+import {UserData} from "../_models/userData";
+import {GlobalService} from "../appServices/global.service";
 
 @Component({
     selector: 'app-nav',
     template: `
       <nav [class.closed]="menuClosed">
         <div class="nav-header">
-           <button class="collapse-btn material-btn" (click)="menuToggle()"><i class="material-icons" [class.hide-element]="menuClosed">&#xE5C4;</i><i class="material-icons" [class.hide-element]="!menuClosed">&#xE5C8;</i></button>
-           <img src="../../assets/images/profile-placeholder.png" />
-           <p class="user-name">Mike Rensel</p>
-           <p class="user-email">mike.rensel@mktec.com</p>
+           <button class="collapse-btn material-btn" (click)="menuToggle()">
+               <i class="material-icons" [class.hide-element]="menuClosed">&#xE5C4;</i>
+               <i class="material-icons" [class.hide-element]="!menuClosed">&#xE5C8;</i>
+           </button>
+           <div class="user-wrapper" [hidden]="menuClosed" *ngIf="user !== null">
+               <img [src]="user.image" />
+               <p class="user-name">{{user.first}} {{user.last}}</p>
+               <p class="user-email">{{user.email}}</p>
+           </div>
         </div>
         <div class="nav-body">
             <div class="nav-group">
@@ -38,14 +45,12 @@ import {AppNavService} from "../appServices/appNav.service";
             height: 100%;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.26);
         }
-        nav.closed {
-            
-        }
         nav.closed .material-icons {
             float: right;
         }
         .nav-header {
             padding: 1em;
+            height: 8.5em;
         }
         .nav-header {
             background-color: #1278BB; 
@@ -57,6 +62,10 @@ import {AppNavService} from "../appServices/appNav.service";
         }
         .nav-group {
             margin-bottom: 1.5em;
+        }
+        .user-wrapper {
+            position: absolute;
+            bottom: 1em;  
         }
         img {
             width: 5em; 
@@ -100,12 +109,21 @@ import {AppNavService} from "../appServices/appNav.service";
 })
 
 export class AppNav {
+
     menuClosed:boolean = false;
     sub: Subscription;
+    user: any = null;
 
-    constructor(private appNavService: AppNavService) {
+    constructor(private appNavService: AppNavService, private userData: UserData, private globalService: GlobalService) {
         this.sub = appNavService.navClose$.subscribe(navClose => {
             this.menuClosed = navClose
+        });
+    }
+
+    ngOnInit() {
+        this.userData.getuser().then((user) => {
+            this.globalService.setUser(user);
+            this.user = user;
         });
     }
 

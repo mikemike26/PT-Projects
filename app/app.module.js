@@ -25,6 +25,9 @@ var appHeader_component_1 = require("./appComponents/appHeader.component");
 var appFooter_component_1 = require("./appComponents/appFooter.component");
 var http_1 = require('@angular/http');
 var appNav_service_1 = require("./appServices/appNav.service");
+var app_service_1 = require("./appServices/app.service");
+var global_service_1 = require("./appServices/global.service");
+var userData_1 = require("./_models/userData");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -51,7 +54,10 @@ var AppModule = (function () {
             ],
             providers: [
                 app_routing_1.appRoutingProviders,
-                appNav_service_1.AppNavService
+                appNav_service_1.AppNavService,
+                app_service_1.AppService,
+                global_service_1.GlobalService,
+                userData_1.UserData
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
