@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
 var AppNavService = (function () {
     function AppNavService() {
-        // Observable string sources
+        // Observable for menu behavior
         this.navCloseSource = new Subject_1.Subject();
         // Observable string streams
         this.navClose$ = this.navCloseSource.asObservable();

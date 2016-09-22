@@ -18,6 +18,22 @@ var ProjectsDetailComponent = (function () {
         this.projectsService = projectsService;
         this.appNavService = appNavService;
         this.hasUpdated = false;
+        //temp
+        this.selectedStatus = 0;
+        this.status = [
+            {
+                id: 0,
+                status: "pending"
+            },
+            {
+                id: 1,
+                status: "incomplete"
+            },
+            {
+                id: 2,
+                status: "complete"
+            }
+        ];
     }
     ProjectsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -52,8 +68,8 @@ var ProjectsDetailComponent = (function () {
     ProjectsDetailComponent = __decorate([
         core_1.Component({
             selector: 'projects-detail',
-            template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group\">\n            <pt-text-input class=\"input\" id=\"title\" name=\"Title\" (keydown)=\"updateField($event, 'title')\" (blur)=\"updateNow($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n            <pt-text-area class=\"input\" id=\"description\" name=\"Description\" (keydown)=\"updateField($event, 'description')\" (blur)=\"updateNow($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div> \n      </div>\n    ",
-            styles: ["\n        :host {\n            display: block;\n        }\n        .detail-wrapper {\n            padding: 1em;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
+            template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group\">\n            <pt-text-input class=\"input\" id=\"title\" name=\"Title\" (keydown)=\"updateField($event, 'title')\" (blur)=\"updateNow($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n            <pt-text-area class=\"input\" id=\"description\" name=\"Description\" (keydown)=\"updateField($event, 'description')\" (blur)=\"updateNow($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div> \n        \n        <div class=\"input-group\">\n          <pt-drop-down [options]=\"status\" displayThis=\"status\" [(output)]=\"selectedStatus\"></pt-drop-down>\n          {{status[selectedStatus].status}}\n        </div>\n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n        }\n        .detail-wrapper {\n            padding: 1em;\n            overflow: visible;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])
     ], ProjectsDetailComponent);

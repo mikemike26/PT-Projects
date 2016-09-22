@@ -3,8 +3,8 @@ import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class AppNavService {
-    
-    // Observable string sources
+
+    // Observable for menu behavior
     private navCloseSource = new Subject<boolean>();
 
     // Observable string streams

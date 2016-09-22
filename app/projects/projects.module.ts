@@ -13,6 +13,7 @@ import {ProjectsComponent} from "./projectsComponents/projects.component";
 import {ProjectsListComponent} from "./projectsComponents/projectsList.component";
 import {ProjectsDetailComponent} from "./projectsComponents/projectsDetail.component";
 import {ProjectsNoSelectComponent} from "./projectsComponents/projectsNoSelectComponent";
+import {PtDropDownComponent} from "../_utilities/components/ptDropDown.component";
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import {ProjectsNoSelectComponent} from "./projectsComponents/projectsNoSelectCo
         ProjectsDetailComponent,
         PtTextInputComponent,
         PtTextAreaComponent,
-        ProjectsNoSelectComponent
+        ProjectsNoSelectComponent,
+        PtDropDownComponent
     ],
     providers: [ProjectsData, ProjectsService, ProjectsResolve]
 })

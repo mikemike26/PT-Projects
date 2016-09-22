@@ -12,6 +12,11 @@ import {AppNavService} from "../../appServices/appNav.service";
             <pt-text-input class="input" id="title" name="Title" (keydown)="updateField($event, 'title')" (blur)="updateNow($event, 'title')" [(output)]="project.title"></pt-text-input>
             <pt-text-area class="input" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
         </div> 
+        
+        <div class="input-group">
+          <pt-drop-down [options]="status" displayThis="status" [(output)]="selectedStatus"></pt-drop-down>
+          {{status[selectedStatus].status}}
+        </div>
       </div>
     `,
     styles: [`
@@ -20,6 +25,7 @@ import {AppNavService} from "../../appServices/appNav.service";
         }
         .detail-wrapper {
             padding: 1em;
+            overflow: visible;
         }
         .detail-wrapper.primary {
             width: 100%;
@@ -37,6 +43,23 @@ export class ProjectsDetailComponent {
 
     selectedId: number;
     project: Project;
+
+    //temp
+    selectedStatus: number = 0;
+    status: any[] = [
+        {
+            id: 0,
+            status: "pending"
+        },
+        {
+            id: 1,
+            status: "incomplete"
+        },
+        {
+            id: 2,
+            status: "complete"
+        }
+    ];
 
     constructor(private route:ActivatedRoute,
                 private projectsService:ProjectsService,
