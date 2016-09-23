@@ -12,6 +12,12 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var utilities_service_1 = require("./utilities.service");
+var ptDropDown_component_1 = require("./components/ptDropDown.component");
+var ptTextArea_component_1 = require("./components/ptTextArea.component");
+var ptTextInput_component_1 = require("./components/ptTextInput.component");
+var ptLimitWords_directive_1 = require("./ptLimitWords.directive");
+var ptDatePicker_1 = require("./components/ptDatePicker");
+var ng2_bootstrap_1 = require("ng2-bootstrap/ng2-bootstrap");
 var UtilitiesModule = (function () {
     function UtilitiesModule() {
     }
@@ -19,9 +25,23 @@ var UtilitiesModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                ng2_bootstrap_1.Ng2BootstrapModule
             ],
-            declarations: [],
+            declarations: [
+                ptDropDown_component_1.PtDropDownComponent,
+                ptTextArea_component_1.PtTextAreaComponent,
+                ptTextInput_component_1.PtTextInputComponent,
+                ptLimitWords_directive_1.PtLimitWordsDirective,
+                ptDatePicker_1.PtDatePickerComponent
+            ],
+            exports: [
+                ptDropDown_component_1.PtDropDownComponent,
+                ptTextArea_component_1.PtTextAreaComponent,
+                ptTextInput_component_1.PtTextInputComponent,
+                ptLimitWords_directive_1.PtLimitWordsDirective,
+                ptDatePicker_1.PtDatePickerComponent
+            ],
             providers: [utilities_service_1.UtilitiesService]
         }), 
         __metadata('design:paramtypes', [])

@@ -17,12 +17,6 @@ var PtDropDownComponent = (function () {
         this.displayKey = "no_selection";
         this.outputChange = new core_1.EventEmitter();
     }
-    PtDropDownComponent.prototype.ngOnInit = function () {
-        console.log("INIT!");
-        console.log(this.items);
-        console.log(this.selectedIndex);
-        console.log(this.displayKey);
-    };
     Object.defineProperty(PtDropDownComponent.prototype, "options", {
         set: function (options) {
             this.items = options;

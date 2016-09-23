@@ -72,13 +72,6 @@ export class PtDropDownComponent {
 
     }
 
-    ngOnInit() {
-        console.log("INIT!");
-        console.log(this.items);
-        console.log(this.selectedIndex);
-        console.log(this.displayKey);
-    }
-
     @Input()
     set options(options: any[]) {
         this.items = options;

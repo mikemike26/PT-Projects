@@ -17,7 +17,8 @@ import {AppNavService} from "../../appServices/appNav.service";
           <pt-drop-down [options]="status" displayThis="status" [(output)]="selectedStatus"></pt-drop-down>
           {{status[selectedStatus].status}}
           
-          <datepicker [(ngModel)]="startDate" [showWeeks]="true"></datepicker>
+          <pt-date-picker [(date)]="startDate"></pt-date-picker>
+          {{startDate}}
         </div>
       </div>
     `,

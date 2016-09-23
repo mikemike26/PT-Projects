@@ -51,6 +51,7 @@ import {Subscription} from "rxjs/Subscription";
         .view-container.close {
             left: 4em;
             right: 0;
+            z-index: 100;
         }
     `]
 })

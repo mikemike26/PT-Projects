@@ -12,20 +12,6 @@ var core_1 = require('@angular/core');
 var UtilitiesService = (function () {
     function UtilitiesService() {
     }
-    //adapter method for the various new implementations of getting the key code on keydown or keyup events
-    UtilitiesService.prototype.getKeyCode = function (event) {
-        var code;
-        if (event.keyCode !== undefined) {
-            code = event.keyCode;
-        }
-        else if (event.key !== undefined) {
-            code = event.key;
-        }
-        else if (event.keyIdentifier !== undefined) {
-            code = event.keyIdentifier;
-        }
-        return code;
-    };
     UtilitiesService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
