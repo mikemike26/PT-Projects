@@ -16,6 +16,8 @@ import {AppNavService} from "../../appServices/appNav.service";
         <div class="input-group">
           <pt-drop-down [options]="status" displayThis="status" [(output)]="selectedStatus"></pt-drop-down>
           {{status[selectedStatus].status}}
+          
+          <datepicker [(ngModel)]="startDate" [showWeeks]="true"></datepicker>
         </div>
       </div>
     `,
@@ -60,6 +62,8 @@ export class ProjectsDetailComponent {
             status: "complete"
         }
     ];
+
+    startDate = new Date();
 
     constructor(private route:ActivatedRoute,
                 private projectsService:ProjectsService,

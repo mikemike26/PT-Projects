@@ -24,6 +24,7 @@ var projectsList_component_1 = require("./projectsComponents/projectsList.compon
 var projectsDetail_component_1 = require("./projectsComponents/projectsDetail.component");
 var projectsNoSelectComponent_1 = require("./projectsComponents/projectsNoSelectComponent");
 var ptDropDown_component_1 = require("../_utilities/components/ptDropDown.component");
+var ng2_bootstrap_1 = require("ng2-bootstrap/ng2-bootstrap");
 var ProjectsModule = (function () {
     function ProjectsModule() {
     }
@@ -33,7 +34,8 @@ var ProjectsModule = (function () {
                 platform_browser_1.BrowserModule,
                 utilities_module_1.UtilitiesModule,
                 projects_routing_1.projectsRouting,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                ng2_bootstrap_1.Ng2BootstrapModule
             ],
             declarations: [
                 projects_component_1.ProjectsComponent,
@@ -43,7 +45,7 @@ var ProjectsModule = (function () {
                 ptTextInput_component_1.PtTextInputComponent,
                 ptTextArea_component_1.PtTextAreaComponent,
                 projectsNoSelectComponent_1.ProjectsNoSelectComponent,
-                ptDropDown_component_1.PtDropDownComponent
+                ptDropDown_component_1.PtDropDownComponent,
             ],
             providers: [projectsData_1.ProjectsData, projects_service_1.ProjectsService, projectsResolve_service_1.ProjectsResolve]
         }), 
