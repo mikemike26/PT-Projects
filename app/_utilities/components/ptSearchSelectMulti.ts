@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 @Component({
     selector: 'pt-search-select-multi',
     template: `
-       <label [class.selected]="selectInput">{{name}}</label>
+       <label [class.selected]="selectInput" [class.invisible]="selectedOptions.length === 0 && searchInput.length === 0">{{name}}</label>
        <ul class="selected-items" [class.selected]="selectInput" (click)="selectInputField()">
           <li class="selected-item" *ngFor="let option of selectedOptions; let i = index" [class.selected]="existingIndex === i">
               <i class="material-icons" (click)="deleteThis(option)">&#xE5CD;</i> {{option[displayThis]}}
@@ -18,7 +18,8 @@ import * as _ from 'lodash';
               (keydown)="listSelect($event)"
               (blur)="onBlur()"
               (click)="clickSearch()"
-              [ptSetFocus]="selectInput">
+              [ptSetFocus]="selectInput"
+              [attr.placeholder]="selectedOptions.length === 0 && searchInput.length === 0 ? name : ''">
           </li>
        </ul>
        <ul class="search-items" *ngIf="filteredOptions.length > 0">
@@ -44,6 +45,9 @@ import * as _ from 'lodash';
         }
         label.selected {
             color: #3f51b5;
+        }
+        label.invisible {
+            visibility: hidden;
         }
         .selected-items {
             border-bottom: 1px solid #999999;
@@ -106,12 +110,11 @@ import * as _ from 'lodash';
 
 export class PtSearchSelectMultiComponent {
     private timer: any;
-    private disableBlur: boolean = false;
 
-    // setFocus: boolean = false;
+    placeHolder: string = "";
     selectInput: boolean = false;
 
-    searchInput: string;
+    searchInput: string = "";
     selectedOptions: any[] = [];
     filteredOptions: any[] = [];
 
