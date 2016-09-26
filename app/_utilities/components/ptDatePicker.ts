@@ -3,12 +3,24 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 @Component({
     selector: 'pt-date-picker',
     template: `
+      <label [class.selected]="pickerVisible">{{name}}</label>
       <div class="picked-date" (click)="showPicker()">{{date | date: 'dd/MM/yyyy'}}</div>
       <div class="picker-wrapper" *ngIf="pickerVisible" (click)="hidePicker()">
         <datepicker [(ngModel)]="date" (ngModelChange)="dateChanged()" (click)="preventProp($event)" [showWeeks]="true"></datepicker>
       </div>
     `,
     styles: [`
+      label {
+            color: #999999;
+            font-weight: lighter;
+            font-size: 0.8em;
+            line-height: 1em;
+            margin-bottom: 0.8em;
+            display: block;
+      }
+      label.selected {
+            color: #3f51b5;
+      }
       .picked-date {
           display: inline-block;
           padding: 0.5em 1em 0.6em 1em;
@@ -45,6 +57,9 @@ export class PtDatePickerComponent {
     constructor() {
 
     }
+
+    @Input()
+    name: string;
 
     @Input()
     date: Date;

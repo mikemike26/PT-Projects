@@ -51,7 +51,7 @@ var PtDropDownComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', String)
     ], PtDropDownComponent.prototype, "name", void 0);
     __decorate([
         core_1.Input(), 

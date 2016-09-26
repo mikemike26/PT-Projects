@@ -17,8 +17,8 @@ import {AppNavService} from "../../appServices/appNav.service";
           <pt-drop-down [options]="status" displayThis="status" name="Status" [(output)]="selectedStatus"></pt-drop-down>
           {{status[selectedStatus].status}}
           
-          <pt-date-picker [(date)]="startDate"></pt-date-picker>
-          {{startDate}}
+          <pt-date-picker [(date)]="startDate" name="Start Date"></pt-date-picker>
+          {{startDate | date: 'dd/MM/yyyy'}}
         </div>
       </div>
     `,

@@ -92,7 +92,8 @@ export class PtDropDownComponent {
 
     }
 
-    @Input() name;
+    @Input()
+    name: string;
 
     @Input()
     set options(options: any[]) {
