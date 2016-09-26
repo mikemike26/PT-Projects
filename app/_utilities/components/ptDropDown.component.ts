@@ -4,7 +4,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
     selector: 'pt-drop-down',
     template: `
        <label [class.selected]="listOpen">{{name}}</label>
-       <div class="drop-down-wrapper noselect">
+       <div class="drop-down-wrapper noselect" [class.selected]="listOpen">
            <div class="selection" (click)="showMenu()" [class.selected]="listOpen">
                <span *ngIf="displayKey !== 'no_selection'">{{items[selectedIndex][displayKey]}}</span>
                <span *ngIf="displayKey === 'no_selection'">{{items[selectedIndex]}}</span>
@@ -28,7 +28,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             height: 3.9em;
         }
         .drop-down-wrapper {
-            z-index: 60;
             background: white;
             border-radius: 2px;
             box-sizing: border-box;
@@ -36,7 +35,9 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             position: absolute;
             left: 0;
             right: 0;
-            max-width: 9.8em;
+        }
+        .drop-down-wrapper.selected {
+            z-index: 60;
         }
         .close-this {
             position: fixed;
@@ -56,13 +57,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
         }
         label.selected {
             color: #3f51b5;
-        }
-        .selection {
-            max-width: 7.8em;
-            width: 100%;
-        }
-        .selection span {
-            padding-right: 54%;
         }
         .selection.selected {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);

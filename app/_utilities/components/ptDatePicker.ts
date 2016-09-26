@@ -34,6 +34,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
           box-sizing: border-box;
           box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
           cursor: pointer;
+          width: 100%;
       }
       datepicker {
           z-index: 50;
