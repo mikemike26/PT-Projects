@@ -13,18 +13,19 @@ import {AppNavService} from "../../appServices/appNav.service";
             <pt-text-area class="input" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
         </div> 
         
-        <div class="input-group">
-          <pt-drop-down [options]="status" displayThis="status" name="Status" [(output)]="selectedStatus"></pt-drop-down>
-          {{status[selectedStatus].status}}
-          
-          <pt-date-picker [(date)]="startDate" name="Start Date"></pt-date-picker>
-          {{startDate | date: 'dd/MM/yyyy'}}
+        <div class="input-group mdl-grid">
+          <pt-drop-down class="mdl-cell mdl-cell--4-col" [options]="status" displayThis="status" name="Status" [(output)]="selectedStatus"></pt-drop-down>
+          <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="startDate" name="Start Date"></pt-date-picker>
+          <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="endDate" name="End Date"></pt-date-picker>
         </div>
       </div>
     `,
     styles: [`
         :host {
             display: block;
+        }
+        .input-group {
+            width: 100%;
         }
         .detail-wrapper {
             padding: 1em;
@@ -65,6 +66,7 @@ export class ProjectsDetailComponent {
     ];
 
     startDate = new Date();
+    endDate = new Date();
 
     constructor(private route:ActivatedRoute,
                 private projectsService:ProjectsService,
