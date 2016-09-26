@@ -26,7 +26,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             margin-bottom: 1em;
             position: relative;
             height: 3.9em;
-            width: 10em;
         }
         .drop-down-wrapper {
             z-index: 60;
@@ -35,6 +34,9 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             box-sizing: border-box;
             box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
             position: absolute;
+            left: 0;
+            right: 0;
+            max-width: 9.8em;
         }
         .close-this {
             position: fixed;
@@ -56,9 +58,11 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             color: #3f51b5;
         }
         .selection {
-            
-            min-width: 7.8em;
-            position: relative;
+            max-width: 7.8em;
+            width: 100%;
+        }
+        .selection span {
+            padding-right: 54%;
         }
         .selection.selected {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);

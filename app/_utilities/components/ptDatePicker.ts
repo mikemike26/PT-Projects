@@ -4,7 +4,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
     selector: 'pt-date-picker',
     template: `
       <label [class.selected]="pickerVisible">{{name}}</label>
-      <div class="picked-date" (click)="showPicker()">{{date | date: 'dd/MM/yyyy'}}</div>
+      <div class="picked-date" (click)="showPicker()">{{date | date: 'MM/dd/yyyy'}}</div>
       <div class="picker-wrapper" *ngIf="pickerVisible" (click)="hidePicker()">
         <datepicker [(ngModel)]="date" (ngModelChange)="dateChanged()" (click)="preventProp($event)" [showWeeks]="true"></datepicker>
       </div>
