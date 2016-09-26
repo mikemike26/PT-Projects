@@ -10,16 +10,20 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
       </div>
     `,
     styles: [`
+      :host {
+          display: block;
+          padding-bottom: 1em;
+      }
       label {
-            color: #999999;
-            font-weight: lighter;
-            font-size: 0.8em;
-            line-height: 1em;
-            margin-bottom: 0.8em;
-            display: block;
+          color: #999999;
+          font-weight: lighter;
+          font-size: 0.8em;
+          line-height: 1em;
+          margin-bottom: 0.8em;
+          display: block;
       }
       label.selected {
-            color: #3f51b5;
+          color: #3f51b5;
       }
       .picked-date {
           display: inline-block;
