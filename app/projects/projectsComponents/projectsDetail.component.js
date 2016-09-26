@@ -13,12 +13,13 @@ var router_1 = require('@angular/router');
 var projects_service_1 = require("../projectsServices/projects.service");
 var appNav_service_1 = require("../../appServices/appNav.service");
 var ProjectsDetailComponent = (function () {
+    //===================================================
     function ProjectsDetailComponent(route, projectsService, appNavService) {
         this.route = route;
         this.projectsService = projectsService;
         this.appNavService = appNavService;
         this.hasUpdated = false;
-        //temp
+        //temp =============================================
         this.selectedStatus = 0;
         this.status = [
             {
@@ -36,6 +37,37 @@ var ProjectsDetailComponent = (function () {
         ];
         this.startDate = new Date();
         this.endDate = new Date();
+        this.selectedDepartment = 0;
+        this.departments = [
+            {
+                id: 0,
+                name: "isg"
+            },
+            {
+                id: 1,
+                name: "bpc"
+            },
+            {
+                id: 2,
+                name: "asg"
+            }
+        ];
+        this.selectedMembers = [];
+        this.selectedUser = 0;
+        this.users = [
+            {
+                id: 0,
+                name: "Mike Rensel"
+            },
+            {
+                id: 1,
+                name: "Michael Woods"
+            },
+            {
+                id: 2,
+                name: "Ron Mares"
+            }
+        ];
     }
     ProjectsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -70,8 +102,8 @@ var ProjectsDetailComponent = (function () {
     ProjectsDetailComponent = __decorate([
         core_1.Component({
             selector: 'projects-detail',
-            template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group\">\n            <pt-text-input class=\"input\" id=\"title\" name=\"Title\" (keydown)=\"updateField($event, 'title')\" (blur)=\"updateNow($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n            <pt-text-area class=\"input\" id=\"description\" name=\"Description\" (keydown)=\"updateField($event, 'description')\" (blur)=\"updateNow($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div> \n        \n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--4-col\" [options]=\"status\" displayThis=\"status\" name=\"Status\" [(output)]=\"selectedStatus\"></pt-drop-down>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"startDate\" name=\"Start Date\"></pt-date-picker>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"endDate\" name=\"End Date\"></pt-date-picker>\n        </div>\n      </div>\n    ",
-            styles: ["\n        :host {\n            display: block;\n        }\n        .input-group {\n            width: 100%;\n        }\n        .detail-wrapper {\n            padding: 1em;\n            overflow: visible;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
+            template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group mdl-grid\">\n            <pt-text-input class=\"input mdl-cell mdl-cell--12-col\" id=\"title\" name=\"Title\" (keydown)=\"updateField($event, 'title')\" (blur)=\"updateNow($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n        </div>\n        <div class=\"input-group mdl-grid\">\n            <pt-text-area class=\"input mdl-cell mdl-cell--12-col\" id=\"description\" name=\"Description\" (keydown)=\"updateField($event, 'description')\" (blur)=\"updateNow($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div> \n        \n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--4-col\" [options]=\"status\" displayThis=\"status\" name=\"Status\" [(output)]=\"selectedStatus\"></pt-drop-down>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"startDate\" name=\"Start Date\"></pt-date-picker>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"endDate\" name=\"End Date\"></pt-date-picker>\n        </div>\n        \n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--6-col\" [options]=\"users\" displayThis=\"name\" name=\"Owner\" [(output)]=\"selectedUser\"></pt-drop-down>\n          <pt-drop-down class=\"mdl-cell mdl-cell--6-col\" [options]=\"departments\" displayThis=\"name\" name=\"Department\" [(output)]=\"selectedDepartment\"></pt-drop-down>\n        </div>\n        \n        <div class=\"input-group mdl-grid\">\n          <pt-search-select-multi class=\"mdl-cell mdl-cell--12-col\" [options]=\"users\" name=\"Members\" displayThis=\"name\" [(output)]=\"selectedMembers\"></pt-search-select-multi>\n        </div>\n        \n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n        }\n        .mdl-grid {\n            padding: 0;\n        }\n        .input-group {\n            width: 100%;\n        }\n        .detail-wrapper {\n            padding: 1em;\n            overflow: visible;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])
     ], ProjectsDetailComponent);

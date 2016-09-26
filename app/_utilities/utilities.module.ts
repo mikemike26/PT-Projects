@@ -8,6 +8,8 @@ import {PtTextInputComponent} from "./components/ptTextInput.component";
 import {PtLimitWordsDirective} from "./ptLimitWords.directive";
 import {PtDatePickerComponent} from "./components/ptDatePicker";
 import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
+import {PtSearchSelectMultiComponent} from "./components/ptSearchSelectMulti";
+import {SearchPipe} from "./pipes/searchPipe";
 
 @NgModule({
     imports: [
@@ -20,14 +22,17 @@ import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
         PtTextAreaComponent,
         PtTextInputComponent,
         PtLimitWordsDirective,
-        PtDatePickerComponent
+        PtDatePickerComponent,
+        PtSearchSelectMultiComponent,
+        SearchPipe
     ],
     exports: [
         PtDropDownComponent,
         PtTextAreaComponent,
         PtTextInputComponent,
         PtLimitWordsDirective,
-        PtDatePickerComponent
+        PtDatePickerComponent,
+        PtSearchSelectMultiComponent
     ],
     providers: [UtilitiesService]
 })

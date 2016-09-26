@@ -8,9 +8,11 @@ import {AppNavService} from "../../appServices/appNav.service";
     selector: 'projects-detail',
     template: `
       <div class="detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp" *ngIf="selectedId > -1">
-        <div class="input-group">
-            <pt-text-input class="input" id="title" name="Title" (keydown)="updateField($event, 'title')" (blur)="updateNow($event, 'title')" [(output)]="project.title"></pt-text-input>
-            <pt-text-area class="input" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
+        <div class="input-group mdl-grid">
+            <pt-text-input class="input mdl-cell mdl-cell--12-col" id="title" name="Title" (keydown)="updateField($event, 'title')" (blur)="updateNow($event, 'title')" [(output)]="project.title"></pt-text-input>
+        </div>
+        <div class="input-group mdl-grid">
+            <pt-text-area class="input mdl-cell mdl-cell--12-col" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
         </div> 
         
         <div class="input-group mdl-grid">
@@ -18,11 +20,24 @@ import {AppNavService} from "../../appServices/appNav.service";
           <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="startDate" name="Start Date"></pt-date-picker>
           <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="endDate" name="End Date"></pt-date-picker>
         </div>
+        
+        <div class="input-group mdl-grid">
+          <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="users" displayThis="name" name="Owner" [(output)]="selectedUser"></pt-drop-down>
+          <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="departments" displayThis="name" name="Department" [(output)]="selectedDepartment"></pt-drop-down>
+        </div>
+        
+        <div class="input-group mdl-grid">
+          <pt-search-select-multi class="mdl-cell mdl-cell--12-col" [options]="users" name="Members" displayThis="name" [(output)]="selectedMembers"></pt-search-select-multi>
+        </div>
+        
       </div>
     `,
     styles: [`
         :host {
             display: block;
+        }
+        .mdl-grid {
+            padding: 0;
         }
         .input-group {
             width: 100%;
@@ -48,7 +63,7 @@ export class ProjectsDetailComponent {
     selectedId: number;
     project: Project;
 
-    //temp
+    //temp =============================================
     selectedStatus: number = 0;
     status: any[] = [
         {
@@ -67,6 +82,40 @@ export class ProjectsDetailComponent {
 
     startDate = new Date();
     endDate = new Date();
+
+    selectedDepartment: number = 0;
+    departments: any[] = [
+        {
+            id: 0,
+            name: "isg"
+        },
+        {
+            id: 1,
+            name: "bpc"
+        },
+        {
+            id: 2,
+            name: "asg"
+        }
+    ];
+
+    selectedMembers: any[] = [];
+    selectedUser: number = 0;
+    users: any[] = [
+        {
+            id: 0,
+            name: "Mike Rensel"
+        },
+        {
+            id: 1,
+            name: "Michael Woods"
+        },
+        {
+            id: 2,
+            name: "Ron Mares"
+        }
+    ];
+    //===================================================
 
     constructor(private route:ActivatedRoute,
                 private projectsService:ProjectsService,

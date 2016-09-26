@@ -18,6 +18,8 @@ var ptTextInput_component_1 = require("./components/ptTextInput.component");
 var ptLimitWords_directive_1 = require("./ptLimitWords.directive");
 var ptDatePicker_1 = require("./components/ptDatePicker");
 var ng2_bootstrap_1 = require("ng2-bootstrap/ng2-bootstrap");
+var ptSearchSelectMulti_1 = require("./components/ptSearchSelectMulti");
+var searchPipe_1 = require("./pipes/searchPipe");
 var UtilitiesModule = (function () {
     function UtilitiesModule() {
     }
@@ -33,14 +35,17 @@ var UtilitiesModule = (function () {
                 ptTextArea_component_1.PtTextAreaComponent,
                 ptTextInput_component_1.PtTextInputComponent,
                 ptLimitWords_directive_1.PtLimitWordsDirective,
-                ptDatePicker_1.PtDatePickerComponent
+                ptDatePicker_1.PtDatePickerComponent,
+                ptSearchSelectMulti_1.PtSearchSelectMultiComponent,
+                searchPipe_1.SearchPipe
             ],
             exports: [
                 ptDropDown_component_1.PtDropDownComponent,
                 ptTextArea_component_1.PtTextAreaComponent,
                 ptTextInput_component_1.PtTextInputComponent,
                 ptLimitWords_directive_1.PtLimitWordsDirective,
-                ptDatePicker_1.PtDatePickerComponent
+                ptDatePicker_1.PtDatePickerComponent,
+                ptSearchSelectMulti_1.PtSearchSelectMultiComponent
             ],
             providers: [utilities_service_1.UtilitiesService]
         }), 
