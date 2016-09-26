@@ -50,12 +50,14 @@ import * as _ from 'lodash';
             margin: 0;
             padding: 0;
             cursor: text;
+            height: 2.4em;
         }
         .selected-items.selected {
             border-bottom: 1px solid #3f51b5;
         }
         .selected-items li {
             display: inline-block;
+            vertical-align: bottom;
         }
         .selected-items li i {
             font-size: 1.2em;
@@ -94,6 +96,7 @@ import * as _ from 'lodash';
         }
         .search-input {
             border: none;
+            padding-top: 0.5em;
         }
         .search-input:focus {
             outline: none;
@@ -115,15 +118,19 @@ export class PtSearchSelectMultiComponent {
     existingIndex: number = -1;
     highlightOption: number = -1;
 
+    //option list
     @Input()
     options: any[];
 
+    //name of search box
     @Input()
     name: string;
 
+    //what property to display
     @Input()
     displayThis: any;
 
+    //output binding
     @Input()
     set output(index: any[]) {
         this.selectedOptions = index;
@@ -131,6 +138,7 @@ export class PtSearchSelectMultiComponent {
     @Output()
     outputChange: EventEmitter<any[]> = new EventEmitter<any[]>();
 
+    //steps list when up and down arrow keys are pressed
     private stepList(keyCode) {
         let index = this.highlightOption,
             filteredOptions = this.filteredOptions;
@@ -156,6 +164,7 @@ export class PtSearchSelectMultiComponent {
         this.filteredOptions = [];
     }
 
+    //if an option is already selected, blink selection
     private alreadySelected(selected) {
         let prop = this.displayThis;
 
@@ -167,6 +176,31 @@ export class PtSearchSelectMultiComponent {
         this.timer = setTimeout(() => {
             this.existingIndex = -1;
         }, 1000);
+    }
+
+    //40 - down arrow
+    //38 - up arrow
+    //13 - enter
+    //27 - esc
+    //8 - delete
+    listSelect(e) {
+        let keyCode = e.keyCode;
+        if(keyCode === 40 || keyCode === 38 || keyCode === 13) {
+            e.preventDefault();
+            if(keyCode === 13) {
+                this.addItem(this.filteredOptions[this.highlightOption]);
+            }else {
+                this.stepList(keyCode);
+            }
+        }else if(keyCode === 27) {
+            this.clearSearch();
+        }else if(keyCode === 8) {
+            let selectedOptions = this.selectedOptions;
+
+            if(this.searchInput.length === 0 && selectedOptions.length > 0) {
+                this.deleteThis(selectedOptions[selectedOptions.length-1]);
+            }
+        }
     }
 
     deleteThis(option) {
@@ -182,6 +216,7 @@ export class PtSearchSelectMultiComponent {
         this.outputChange.emit(this.selectedOptions);
     }
 
+    //call our pipe manually so we can set default selection
     renderSearch() {
         this.filteredOptions = new SearchPipe().transform(this.options, [this.searchInput, this.displayThis]);
         this.highlightOption = 0;
@@ -194,25 +229,6 @@ export class PtSearchSelectMultiComponent {
             this.outputChange.emit(this.selectedOptions);
         }else {
             this.alreadySelected(addItem);
-        }
-    }
-
-    //40 - down arrow
-    //38 - up arrow
-    //13 - enter
-    //27 - esc
-    listSelect(e) {
-        let keyCode = e.keyCode;
-
-        if(keyCode === 40 || keyCode === 38 || keyCode === 13) {
-            e.preventDefault();
-            if(keyCode === 13) {
-                this.addItem(this.filteredOptions[this.highlightOption]);
-            }else {
-                this.stepList(keyCode);
-            }
-        }else if(keyCode === 27) {
-            this.clearSearch();
         }
     }
 
