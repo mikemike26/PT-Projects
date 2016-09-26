@@ -9,9 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var searchPipe_1 = require("../pipes/searchPipe");
+var _ = require('lodash');
 var PtSearchSelectMultiComponent = (function () {
     function PtSearchSelectMultiComponent() {
+        this.disableBlur = false;
+        // setFocus: boolean = false;
+        this.selectInput = false;
         this.selectedOptions = [];
+        this.filteredOptions = [];
+        this.existingIndex = -1;
+        this.highlightOption = -1;
         this.outputChange = new core_1.EventEmitter();
     }
     Object.defineProperty(PtSearchSelectMultiComponent.prototype, "output", {
@@ -21,6 +29,94 @@ var PtSearchSelectMultiComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    PtSearchSelectMultiComponent.prototype.stepList = function (keyCode) {
+        var index = this.highlightOption, filteredOptions = this.filteredOptions;
+        //down arrow
+        if (keyCode === 40) {
+            this.highlightOption = index === filteredOptions.length - 1 ? 0 : index + 1;
+        }
+        else if (keyCode === 38) {
+            this.highlightOption = index === 0 ? filteredOptions.length - 1 : index - 1;
+        }
+    };
+    PtSearchSelectMultiComponent.prototype.isSelected = function (addItem) {
+        var prop = this.displayThis;
+        return _.find(this.selectedOptions, function (item) {
+            return item[prop] === addItem[prop];
+        });
+    };
+    PtSearchSelectMultiComponent.prototype.clearSearch = function () {
+        this.searchInput = "";
+        this.filteredOptions = [];
+    };
+    PtSearchSelectMultiComponent.prototype.alreadySelected = function (selected) {
+        var _this = this;
+        var prop = this.displayThis;
+        this.existingIndex = _.findIndex(this.selectedOptions, function (item) {
+            return item[prop] === selected[prop];
+        });
+        clearTimeout(this.timer);
+        this.timer = setTimeout(function () {
+            _this.existingIndex = -1;
+        }, 1000);
+    };
+    PtSearchSelectMultiComponent.prototype.deleteThis = function (option) {
+        var deleteIndex, prop = this.displayThis;
+        deleteIndex = _.findIndex(this.selectedOptions, function (item) {
+            return item[prop] === option[prop];
+        });
+        this.selectedOptions.splice(deleteIndex, 1);
+        this.outputChange.emit(this.selectedOptions);
+    };
+    PtSearchSelectMultiComponent.prototype.renderSearch = function () {
+        this.filteredOptions = new searchPipe_1.SearchPipe().transform(this.options, [this.searchInput, this.displayThis]);
+        this.highlightOption = 0;
+    };
+    PtSearchSelectMultiComponent.prototype.addItem = function (addItem) {
+        if (addItem && !this.isSelected(addItem)) {
+            this.selectedOptions.push(addItem);
+            this.clearSearch();
+            this.outputChange.emit(this.selectedOptions);
+        }
+        else {
+            this.alreadySelected(addItem);
+        }
+    };
+    //40 - down arrow
+    //38 - up arrow
+    //13 - enter
+    //27 - esc
+    PtSearchSelectMultiComponent.prototype.listSelect = function (e) {
+        var keyCode = e.keyCode;
+        if (keyCode === 40 || keyCode === 38 || keyCode === 13) {
+            e.preventDefault();
+            if (keyCode === 13) {
+                this.addItem(this.filteredOptions[this.highlightOption]);
+            }
+            else {
+                this.stepList(keyCode);
+            }
+        }
+        else if (keyCode === 27) {
+            this.clearSearch();
+        }
+    };
+    PtSearchSelectMultiComponent.prototype.clickToAdd = function (item) {
+        this.addItem(item);
+    };
+    PtSearchSelectMultiComponent.prototype.clickSearch = function () {
+        this.selectInput = true;
+    };
+    PtSearchSelectMultiComponent.prototype.selectInputField = function () {
+        this.selectInput = true;
+    };
+    PtSearchSelectMultiComponent.prototype.onBlur = function () {
+        this.selectInput = false;
+        this.clearSearch();
+    };
+    PtSearchSelectMultiComponent.prototype.ngOnDestroy = function () {
+        clearTimeout(this.timer);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
@@ -45,8 +141,8 @@ var PtSearchSelectMultiComponent = (function () {
     PtSearchSelectMultiComponent = __decorate([
         core_1.Component({
             selector: 'pt-search-select-multi',
-            template: "\n       <label>{{name}}</label>\n       <ul class=\"selected-items\">\n          <li *ngFor=\"let option of selectedOptions\">{{option[displayThis]}}</li>\n          <li class=\"search\">\n              <input type=\"text\" \n              class=\"pt-input\"\n              [(ngModel)]=\"searchInput\">\n          </li>\n       </ul>\n       <ul class=\"search-items\">\n          <li *ngFor=\"let item of options | search:[searchInput, displayThis]\">{{item[displayThis]}}</li>\n       </ul>\n    ",
-            styles: ["\n        :host {\n            display: inline-block;\n            margin-bottom: 1em;\n            position: relative;\n            height: 3.9em;\n        }\n    "]
+            template: "\n       <label [class.selected]=\"selectInput\">{{name}}</label>\n       <ul class=\"selected-items\" [class.selected]=\"selectInput\" (click)=\"selectInputField()\">\n          <li class=\"selected-item\" *ngFor=\"let option of selectedOptions; let i = index\" [class.selected]=\"existingIndex === i\">\n              <i class=\"material-icons\" (click)=\"deleteThis(option)\">&#xE5CD;</i> {{option[displayThis]}}\n          </li>\n          <li class=\"search\">\n              <input type=\"text\" \n              class=\"search-input\"\n              [(ngModel)]=\"searchInput\"\n              (ngModelChange)=\"renderSearch()\"\n              (keydown)=\"listSelect($event)\"\n              (blur)=\"onBlur()\"\n              (click)=\"clickSearch()\"\n              [ptSetFocus]=\"selectInput\">\n          </li>\n       </ul>\n       <ul class=\"search-items\" *ngIf=\"filteredOptions.length > 0\">\n          <li (mousedown)=\"clickToAdd(item)\" \n              *ngFor=\"let item of filteredOptions; let i = index;\" \n              [class.selected]=\"i === highlightOption\">{{item[displayThis]}}</li>\n       </ul>\n    ",
+            styles: ["\n        :host {\n            display: inline-block;\n            margin-bottom: 1em;\n            position: relative;\n            height: 3.9em;\n        }\n        label {\n            color: #999999;\n            font-weight: lighter;\n            font-size: 0.8em;\n            line-height: 1em;\n            margin-bottom: 0.8em;\n            display: block;\n        }\n        label.selected {\n            color: #3f51b5;\n        }\n        .selected-items {\n            border-bottom: 1px solid #999999;\n            margin: 0;\n            padding: 0;\n            cursor: text;\n        }\n        .selected-items.selected {\n            border-bottom: 1px solid #3f51b5;\n        }\n        .selected-items li {\n            display: inline-block;\n        }\n        .selected-items li i {\n            font-size: 1.2em;\n            cursor: pointer;\n        }\n        .selected-items li.selected {\n            background: #ff4081;\n        }\n        .selected-item {\n            padding: 0.3em 0.6em;\n            border-radius: 0.2em;\n            background-color: #3f51b5;\n            color: #ffffff;\n            margin-right: 0.5em;\n        }\n        .search-items {\n            background: white;\n            border-radius: 2px;\n            box-sizing: border-box;\n            box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n            position: absolute;\n            left: 0;\n            right: 0;\n            margin: 0;\n            padding: 1em;\n        }\n        .search-items li {\n            list-style-type: none;\n            padding: 0.2em;\n            border-radius: 0.2em;\n            cursor: pointer;\n        }\n        .search-items li.selected {\n            background: #3f51b5;\n            color: white;\n        }\n        .search-input {\n            border: none;\n        }\n        .search-input:focus {\n            outline: none;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], PtSearchSelectMultiComponent);

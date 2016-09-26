@@ -1,3 +1,5 @@
+//usage:
+//<li *ngFor="let item of options | search:[fromInput, targetProperty]"></li>
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -14,9 +16,9 @@ var SearchPipe = (function () {
     function SearchPipe() {
     }
     SearchPipe.prototype.transform = function (items, args) {
-        var prop = args[1], input = args[0];
+        var prop = args[1], input = args[0].toLowerCase();
         return _.filter(items, function (item) {
-            return item[prop].match(new RegExp(input));
+            return item[prop].toLowerCase().match(new RegExp(input));
         });
     };
     ;

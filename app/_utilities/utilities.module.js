@@ -20,6 +20,7 @@ var ptDatePicker_1 = require("./components/ptDatePicker");
 var ng2_bootstrap_1 = require("ng2-bootstrap/ng2-bootstrap");
 var ptSearchSelectMulti_1 = require("./components/ptSearchSelectMulti");
 var searchPipe_1 = require("./pipes/searchPipe");
+var ptSetFocus_directive_1 = require("./ptSetFocus.directive");
 var UtilitiesModule = (function () {
     function UtilitiesModule() {
     }
@@ -37,7 +38,8 @@ var UtilitiesModule = (function () {
                 ptLimitWords_directive_1.PtLimitWordsDirective,
                 ptDatePicker_1.PtDatePickerComponent,
                 ptSearchSelectMulti_1.PtSearchSelectMultiComponent,
-                searchPipe_1.SearchPipe
+                searchPipe_1.SearchPipe,
+                ptSetFocus_directive_1.PtSetFocusDirective
             ],
             exports: [
                 ptDropDown_component_1.PtDropDownComponent,

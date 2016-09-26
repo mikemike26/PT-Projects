@@ -10,6 +10,7 @@ import {PtDatePickerComponent} from "./components/ptDatePicker";
 import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
 import {PtSearchSelectMultiComponent} from "./components/ptSearchSelectMulti";
 import {SearchPipe} from "./pipes/searchPipe";
+import {PtSetFocusDirective} from "./ptSetFocus.directive";
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import {SearchPipe} from "./pipes/searchPipe";
         PtLimitWordsDirective,
         PtDatePickerComponent,
         PtSearchSelectMultiComponent,
-        SearchPipe
+        SearchPipe,
+        PtSetFocusDirective
     ],
     exports: [
         PtDropDownComponent,
