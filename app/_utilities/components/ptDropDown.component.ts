@@ -3,7 +3,8 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 @Component({
     selector: 'pt-drop-down',
     template: `
-       <div class="drop-down-wrapper">
+       <label [class.selected]="listOpen">{{name}}</label>
+       <div class="drop-down-wrapper noselect">
            <div class="selection" (click)="showMenu()" [class.selected]="listOpen">
                <span *ngIf="displayKey !== 'no_selection'">{{items[selectedIndex][displayKey]}}</span>
                <span *ngIf="displayKey === 'no_selection'">{{items[selectedIndex]}}</span>
@@ -17,23 +18,42 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
               </li>
            </ul>
        </div>
-       
+       <div class="close-this" [class.hidden]="!listOpen" (click)="closeList()"></div>
     `,
     styles: [`
         :host {
             display: inline-block;
             margin-bottom: 1em;
             position: relative;
-            height: 2.4em;
-            width: 9.8em;
+            height: 3.9em;
+            width: 10em;
         }
         .drop-down-wrapper {
-            z-index: 1;
+            z-index: 60;
             background: white;
             border-radius: 2px;
             box-sizing: border-box;
             box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
             position: absolute;
+        }
+        .close-this {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+        }
+        label {
+            color: #999999;
+            font-weight: lighter;
+            font-size: 0.8em;
+            line-height: 1em;
+            margin-bottom: 0.8em;
+            display: block;
+        }
+        label.selected {
+            color: #3f51b5;
         }
         .selection {
             
@@ -72,6 +92,8 @@ export class PtDropDownComponent {
 
     }
 
+    @Input() name;
+
     @Input()
     set options(options: any[]) {
         this.items = options;
@@ -91,6 +113,10 @@ export class PtDropDownComponent {
 
     showMenu() {
         this.listOpen = !this.listOpen;
+    }
+
+    closeList() {
+        this.listOpen = false;
     }
 
     selectItem(index) {
