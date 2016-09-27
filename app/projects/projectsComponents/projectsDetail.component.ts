@@ -9,25 +9,25 @@ import {AppNavService} from "../../appServices/appNav.service";
     template: `
       <div class="detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp" *ngIf="selectedId > -1">
         <div class="input-group mdl-grid">
-            <pt-text-input class="input mdl-cell mdl-cell--12-col" id="title" name="Title" (keydown)="updateField($event, 'title')" (blur)="updateNow($event, 'title')" [(output)]="project.title"></pt-text-input>
+            <pt-text-input class="input mdl-cell mdl-cell--12-col" id="title" name="Title" (keydown)="updateDebounce($event, 'title')" (blur)="updateOnblur($event, 'title')" [(output)]="project.title"></pt-text-input>
         </div>
         <div class="input-group mdl-grid">
-            <pt-text-area class="input mdl-cell mdl-cell--12-col" id="description" name="Description" (keydown)="updateField($event, 'description')" (blur)="updateNow($event, 'description')" [(output)]="project.description"></pt-text-area>
+            <pt-text-area class="input mdl-cell mdl-cell--12-col" id="description" name="Description" (keydown)="updateDebounce($event, 'description')" (blur)="updateOnblur($event, 'description')" [(output)]="project.description"></pt-text-area>
         </div> 
         
         <div class="input-group mdl-grid">
-          <pt-drop-down class="mdl-cell mdl-cell--4-col" [options]="status" displayThis="status" name="Status" [(output)]="selectedStatus"></pt-drop-down>
-          <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="startDate" name="Start Date"></pt-date-picker>
-          <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="endDate" name="End Date"></pt-date-picker>
+          <pt-drop-down class="mdl-cell mdl-cell--4-col" [options]="status" displayThis="status" name="Status" [(output)]="selectedStatus" (outputChange)="updateImmediate($event, 'status')"></pt-drop-down>
+          <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="startDate" name="Start Date" (dateChange)="updateImmediate($event, 'startDate')"></pt-date-picker>
+          <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="endDate" name="End Date" (dateChange)="updateImmediate($event, 'endDate')"></pt-date-picker>
         </div>
         
         <div class="input-group mdl-grid">
-          <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="users" displayThis="name" name="Owner" [(output)]="selectedUser"></pt-drop-down>
-          <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="departments" displayThis="name" name="Department" [(output)]="selectedDepartment"></pt-drop-down>
+          <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="users" displayThis="name" name="Owner" [(output)]="selectedUser" (outputChange)="updateImmediate($event, 'owner')"></pt-drop-down>
+          <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="departments" displayThis="name" name="Department" [(output)]="selectedDepartment" (outputChange)="updateImmediate($event, 'department')"></pt-drop-down>
         </div>
         
         <div class="input-group mdl-grid">
-          <pt-search-select-multi class="mdl-cell mdl-cell--12-col" [options]="users" name="Members" displayThis="name" [(output)]="selectedMembers"></pt-search-select-multi>
+          <pt-search-select-multi class="mdl-cell mdl-cell--12-col" [options]="users" name="Members" displayThis="name" [(output)]="selectedMembers" (outputChange)="updateDebounce($event, 'members')" (blur)="updateOnblur($event, 'members')"></pt-search-select-multi>
         </div>
         
       </div>
@@ -56,7 +56,7 @@ import {AppNavService} from "../../appServices/appNav.service";
 })
 
 export class ProjectsDetailComponent {
-    private hasUpdated: boolean = false;
+    private hasUpdated: boolean = true;
     private sub: any;
     private timer: any;
 
@@ -136,11 +136,11 @@ export class ProjectsDetailComponent {
     }
 
     //debounced update
-    updateField(e, field) {
-        this.hasUpdated = false;
-
+    updateDebounce(e, field) {
         //keycode 9 === tab
         if(e.keyCode !== 9) {
+            this.hasUpdated = false;
+
             clearTimeout(this.timer);
             this.timer = setTimeout(() => {
                 this.hasUpdated = true;
@@ -151,11 +151,15 @@ export class ProjectsDetailComponent {
     }
 
     //immediate update
-    updateNow(e, field) {
+    updateOnblur(e, field) {
         if(!this.hasUpdated) {
+            this.hasUpdated = true;
             clearTimeout(this.timer);
             console.log("SENDING NOW!! "+ field.toUpperCase());
         }
     }
-
+    
+    updateImmediate(e, field) {
+        console.log("SENDING NOW!! "+ field.toUpperCase());
+    }
 }

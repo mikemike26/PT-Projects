@@ -16,6 +16,7 @@ var PtDropDownComponent = (function () {
         this.selectedIndex = -1;
         this.displayKey = "no_selection";
         this.outputChange = new core_1.EventEmitter();
+        this.blur = new core_1.EventEmitter();
     }
     Object.defineProperty(PtDropDownComponent.prototype, "options", {
         set: function (options) {
@@ -41,8 +42,9 @@ var PtDropDownComponent = (function () {
     PtDropDownComponent.prototype.showMenu = function () {
         this.listOpen = !this.listOpen;
     };
-    PtDropDownComponent.prototype.closeList = function () {
+    PtDropDownComponent.prototype.onBlur = function (e) {
         this.listOpen = false;
+        this.blur.emit(e);
     };
     PtDropDownComponent.prototype.selectItem = function (index) {
         this.selectedIndex = index;
@@ -68,6 +70,10 @@ var PtDropDownComponent = (function () {
         __metadata('design:type', core_1.EventEmitter)
     ], PtDropDownComponent.prototype, "outputChange", void 0);
     __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], PtDropDownComponent.prototype, "blur", void 0);
+    __decorate([
         core_1.Input(), 
         __metadata('design:type', String), 
         __metadata('design:paramtypes', [String])
@@ -75,8 +81,8 @@ var PtDropDownComponent = (function () {
     PtDropDownComponent = __decorate([
         core_1.Component({
             selector: 'pt-drop-down',
-            template: "\n       <label [class.selected]=\"listOpen\">{{name}}</label>\n       <div class=\"drop-down-wrapper noselect\" [class.selected]=\"listOpen\">\n           <div class=\"selection\" tabindex=\"-1\" (click)=\"showMenu()\" (blur)=\"closeList()\" [class.selected]=\"listOpen\">\n               <span *ngIf=\"displayKey !== 'no_selection'\">{{items[selectedIndex][displayKey]}}</span>\n               <span *ngIf=\"displayKey === 'no_selection'\">{{items[selectedIndex]}}</span>\n               <i class=\"material-icons\" *ngIf=\"!listOpen\">&#xE5C5;</i>\n               <i class=\"material-icons\" *ngIf=\"listOpen\">&#xE5C7;</i>\n           </div>\n           <ul class=\"selection-list\" *ngIf=\"listOpen\">\n              <li class=\"selection-item\" *ngFor=\"let item of items; let i = index;\" (click)=\"selectItem(i)\">\n                <span *ngIf=\"displayKey !== 'no_selection'\">{{item[displayKey]}}</span>\n                <span *ngIf=\"displayKey === 'no_selection'\">{{item}}</span>\n              </li>\n           </ul>\n       </div>\n    ",
-            styles: ["\n        :host {\n            display: inline-block;\n            margin-bottom: 1em;\n            position: relative;\n            height: 3.9em;\n        }\n        .drop-down-wrapper {\n            background: white;\n            border-radius: 2px;\n            box-sizing: border-box;\n            box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n            position: absolute;\n            left: 0;\n            right: 0;\n        }\n        .drop-down-wrapper.selected {\n            z-index: 60;\n        }\n        label {\n            color: #999999;\n            font-weight: lighter;\n            font-size: 0.8em;\n            line-height: 1em;\n            margin-bottom: 0.8em;\n            display: block;\n        }\n        label.selected {\n            color: #3f51b5;\n        }\n        .selection:focus {\n            outline: none;\n        }\n        .selection.selected {\n            border-bottom: 1px solid rgba(0, 0, 0, 0.2);\n        }\n        .selection, .selection-item {\n            padding: 0.5em 1em 0.6em 1em;\n            cursor: pointer;\n        }\n        .selection i {\n            position: absolute;\n            right: 0.4em;\n            top: 0.3em;\n        }\n        .selection-list {\n            padding: 0;\n        }\n        .selection-list, .selection-list li{\n            list-style-type: none;\n            margin: 0;\n        }\n    "]
+            template: "\n       <label [class.selected]=\"listOpen\">{{name}}</label>\n       <div class=\"drop-down-wrapper noselect\" [class.selected]=\"listOpen\" (blur)=\"onBlur($event)\" tabindex=\"-1\">\n           <div class=\"selection\" (click)=\"showMenu()\" [class.selected]=\"listOpen\">\n               <span *ngIf=\"displayKey !== 'no_selection'\">{{items[selectedIndex][displayKey]}}</span>\n               <span *ngIf=\"displayKey === 'no_selection'\">{{items[selectedIndex]}}</span>\n               <i class=\"material-icons\" *ngIf=\"!listOpen\">&#xE5C5;</i>\n               <i class=\"material-icons\" *ngIf=\"listOpen\">&#xE5C7;</i>\n           </div>\n           <ul class=\"selection-list\" *ngIf=\"listOpen\">\n              <li class=\"selection-item\" *ngFor=\"let item of items; let i = index;\" (click)=\"selectItem(i)\">\n                <span *ngIf=\"displayKey !== 'no_selection'\">{{item[displayKey]}}</span>\n                <span *ngIf=\"displayKey === 'no_selection'\">{{item}}</span>\n              </li>\n           </ul>\n       </div>\n    ",
+            styles: ["\n        :host {\n            display: inline-block;\n            margin-bottom: 1em;\n            position: relative;\n            height: 3.9em;\n        }\n        .drop-down-wrapper {\n            background: white;\n            border-radius: 2px;\n            box-sizing: border-box;\n            box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n            position: absolute;\n            left: 0;\n            right: 0;\n        }\n        .drop-down-wrapper:focus {\n            outline: none;\n        }\n        .drop-down-wrapper.selected {\n            z-index: 60;\n        }\n        label {\n            color: #999999;\n            font-weight: lighter;\n            font-size: 0.8em;\n            line-height: 1em;\n            margin-bottom: 0.8em;\n            display: block;\n        }\n        label.selected {\n            color: #3f51b5;\n        }\n        .selection.selected {\n            border-bottom: 1px solid rgba(0, 0, 0, 0.2);\n        }\n        .selection, .selection-item {\n            padding: 0.5em 1em 0.6em 1em;\n            cursor: pointer;\n        }\n        .selection i {\n            position: absolute;\n            right: 0.4em;\n            top: 0.3em;\n        }\n        .selection-list {\n            padding: 0;\n        }\n        .selection-list, .selection-list li{\n            list-style-type: none;\n            margin: 0;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], PtDropDownComponent);

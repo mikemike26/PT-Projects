@@ -16,7 +16,7 @@ import * as _ from 'lodash';
               [(ngModel)]="searchInput"
               (ngModelChange)="renderSearch()"
               (keydown)="listSelect($event)"
-              (blur)="onBlur()"
+              (blur)="onBlur($event)"
               (click)="clickSearch()"
               [ptSetFocus]="selectInput"
               [attr.placeholder]="selectedOptions.length === 0 && searchInput.length === 0 ? name : ''">
@@ -141,6 +141,9 @@ export class PtSearchSelectMultiComponent {
     @Output()
     outputChange: EventEmitter<any[]> = new EventEmitter<any[]>();
 
+    @Output()
+    blur: EventEmitter<string> = new EventEmitter<string>();
+
     //steps list when up and down arrow keys are pressed
     private stepList(keyCode) {
         let index = this.highlightOption,
@@ -247,9 +250,11 @@ export class PtSearchSelectMultiComponent {
         this.selectInput = true;
     }
 
-    onBlur() {
+    onBlur(e) {
         this.selectInput = false;
         this.clearSearch();
+
+        this.blur.emit(e);
     }
 
     ngOnDestroy() {

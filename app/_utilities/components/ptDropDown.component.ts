@@ -4,8 +4,8 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
     selector: 'pt-drop-down',
     template: `
        <label [class.selected]="listOpen">{{name}}</label>
-       <div class="drop-down-wrapper noselect" [class.selected]="listOpen">
-           <div class="selection" tabindex="-1" (click)="showMenu()" (blur)="closeList()" [class.selected]="listOpen">
+       <div class="drop-down-wrapper noselect" [class.selected]="listOpen" (blur)="onBlur($event)" tabindex="-1">
+           <div class="selection" (click)="showMenu()" [class.selected]="listOpen">
                <span *ngIf="displayKey !== 'no_selection'">{{items[selectedIndex][displayKey]}}</span>
                <span *ngIf="displayKey === 'no_selection'">{{items[selectedIndex]}}</span>
                <i class="material-icons" *ngIf="!listOpen">&#xE5C5;</i>
@@ -35,6 +35,9 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             left: 0;
             right: 0;
         }
+        .drop-down-wrapper:focus {
+            outline: none;
+        }
         .drop-down-wrapper.selected {
             z-index: 60;
         }
@@ -48,9 +51,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
         }
         label.selected {
             color: #3f51b5;
-        }
-        .selection:focus {
-            outline: none;
         }
         .selection.selected {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -99,6 +99,9 @@ export class PtDropDownComponent {
     @Output()
     outputChange: EventEmitter<string> = new EventEmitter<string>();
 
+    @Output()
+    blur: EventEmitter<string> = new EventEmitter<string>();
+
     @Input()
     set displayThis(key: string) {
         this.displayKey = key;
@@ -108,8 +111,9 @@ export class PtDropDownComponent {
         this.listOpen = !this.listOpen;
     }
 
-    closeList() {
+    onBlur(e) {
         this.listOpen = false;
+        this.blur.emit(e);
     }
 
     selectItem(index) {

@@ -21,6 +21,7 @@ var PtSearchSelectMultiComponent = (function () {
         this.existingIndex = -1;
         this.highlightOption = -1;
         this.outputChange = new core_1.EventEmitter();
+        this.blur = new core_1.EventEmitter();
     }
     Object.defineProperty(PtSearchSelectMultiComponent.prototype, "output", {
         //output binding
@@ -121,9 +122,10 @@ var PtSearchSelectMultiComponent = (function () {
     PtSearchSelectMultiComponent.prototype.selectInputField = function () {
         this.selectInput = true;
     };
-    PtSearchSelectMultiComponent.prototype.onBlur = function () {
+    PtSearchSelectMultiComponent.prototype.onBlur = function (e) {
         this.selectInput = false;
         this.clearSearch();
+        this.blur.emit(e);
     };
     PtSearchSelectMultiComponent.prototype.ngOnDestroy = function () {
         clearTimeout(this.timer);
@@ -149,10 +151,14 @@ var PtSearchSelectMultiComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
     ], PtSearchSelectMultiComponent.prototype, "outputChange", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], PtSearchSelectMultiComponent.prototype, "blur", void 0);
     PtSearchSelectMultiComponent = __decorate([
         core_1.Component({
             selector: 'pt-search-select-multi',
-            template: "\n       <label [class.selected]=\"selectInput\" [class.invisible]=\"selectedOptions.length === 0 && searchInput.length === 0\">{{name}}</label>\n       <ul class=\"selected-items\" [class.selected]=\"selectInput\" (click)=\"selectInputField()\">\n          <li class=\"selected-item\" *ngFor=\"let option of selectedOptions; let i = index\" [class.selected]=\"existingIndex === i\">\n              <i class=\"material-icons\" (click)=\"deleteThis(option)\">&#xE5CD;</i> {{option[displayThis]}}\n          </li>\n          <li class=\"search\">\n              <input type=\"text\" \n              class=\"search-input\"\n              [(ngModel)]=\"searchInput\"\n              (ngModelChange)=\"renderSearch()\"\n              (keydown)=\"listSelect($event)\"\n              (blur)=\"onBlur()\"\n              (click)=\"clickSearch()\"\n              [ptSetFocus]=\"selectInput\"\n              [attr.placeholder]=\"selectedOptions.length === 0 && searchInput.length === 0 ? name : ''\">\n          </li>\n       </ul>\n       <ul class=\"search-items\" *ngIf=\"filteredOptions.length > 0\">\n          <li (mousedown)=\"clickToAdd(item)\" \n              *ngFor=\"let item of filteredOptions; let i = index;\" \n              [class.selected]=\"i === highlightOption\">{{item[displayThis]}}</li>\n       </ul>\n    ",
+            template: "\n       <label [class.selected]=\"selectInput\" [class.invisible]=\"selectedOptions.length === 0 && searchInput.length === 0\">{{name}}</label>\n       <ul class=\"selected-items\" [class.selected]=\"selectInput\" (click)=\"selectInputField()\">\n          <li class=\"selected-item\" *ngFor=\"let option of selectedOptions; let i = index\" [class.selected]=\"existingIndex === i\">\n              <i class=\"material-icons\" (click)=\"deleteThis(option)\">&#xE5CD;</i> {{option[displayThis]}}\n          </li>\n          <li class=\"search\">\n              <input type=\"text\" \n              class=\"search-input\"\n              [(ngModel)]=\"searchInput\"\n              (ngModelChange)=\"renderSearch()\"\n              (keydown)=\"listSelect($event)\"\n              (blur)=\"onBlur($event)\"\n              (click)=\"clickSearch()\"\n              [ptSetFocus]=\"selectInput\"\n              [attr.placeholder]=\"selectedOptions.length === 0 && searchInput.length === 0 ? name : ''\">\n          </li>\n       </ul>\n       <ul class=\"search-items\" *ngIf=\"filteredOptions.length > 0\">\n          <li (mousedown)=\"clickToAdd(item)\" \n              *ngFor=\"let item of filteredOptions; let i = index;\" \n              [class.selected]=\"i === highlightOption\">{{item[displayThis]}}</li>\n       </ul>\n    ",
             styles: ["\n        :host {\n            display: inline-block;\n            margin-bottom: 1em;\n            position: relative;\n            height: 3.9em;\n        }\n        label {\n            color: #999999;\n            font-weight: lighter;\n            font-size: 0.8em;\n            line-height: 1em;\n            margin-bottom: 0.8em;\n            display: block;\n        }\n        label.selected {\n            color: #3f51b5;\n        }\n        label.invisible {\n            visibility: hidden;\n        }\n        .selected-items {\n            border-bottom: 1px solid #999999;\n            margin: 0;\n            padding: 0;\n            cursor: text;\n            height: 2.4em;\n        }\n        .selected-items.selected {\n            border-bottom: 1px solid #3f51b5;\n        }\n        .selected-items li {\n            display: inline-block;\n            vertical-align: bottom;\n        }\n        .selected-items li i {\n            font-size: 1.2em;\n            cursor: pointer;\n        }\n        .selected-items li.selected {\n            background: #ff4081;\n        }\n        .selected-item {\n            padding: 0.3em 0.6em;\n            border-radius: 0.2em;\n            background-color: #3f51b5;\n            color: #ffffff;\n            margin-right: 0.5em;\n        }\n        .search-items {\n            background: white;\n            border-radius: 2px;\n            box-sizing: border-box;\n            box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n            position: absolute;\n            left: 0;\n            right: 0;\n            margin: 0;\n            padding: 1em;\n        }\n        .search-items li {\n            list-style-type: none;\n            padding: 0.2em;\n            border-radius: 0.2em;\n            cursor: pointer;\n        }\n        .search-items li.selected {\n            background: #3f51b5;\n            color: white;\n        }\n        .search-input {\n            border: none;\n            padding-top: 0.5em;\n        }\n        .search-input:focus {\n            outline: none;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
