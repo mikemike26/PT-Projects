@@ -136,6 +136,7 @@ export class ProjectsDetailComponent {
     }
 
     //debounced update
+    //for updating typed fields or multi selects
     updateDebounce(e, field) {
         //keycode 9 === tab
         if(e.keyCode !== 9) {
@@ -151,15 +152,18 @@ export class ProjectsDetailComponent {
     }
 
     //immediate update
+    //used in addition to updateDebounced.
+    //we want to make sure to update immediately in case someone is fast at inputing information
     updateOnblur(e, field) {
         if(!this.hasUpdated) {
             this.hasUpdated = true;
             clearTimeout(this.timer);
-            console.log("SENDING NOW!! "+ field.toUpperCase());
+            console.log("SENDING ON BLUR!! "+ field.toUpperCase());
         }
     }
-    
+
+    //used to update on change - generally for dropdowns that really only have 1 change option at a time
     updateImmediate(e, field) {
-        console.log("SENDING NOW!! "+ field.toUpperCase());
+        console.log("SENDING IMMEDIATeLY!! "+ field.toUpperCase());
     }
 }

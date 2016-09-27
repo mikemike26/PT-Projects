@@ -80,6 +80,7 @@ var ProjectsDetailComponent = (function () {
         });
     };
     //debounced update
+    //for updating typed fields or multi selects
     ProjectsDetailComponent.prototype.updateDebounce = function (e, field) {
         var _this = this;
         //keycode 9 === tab
@@ -93,15 +94,18 @@ var ProjectsDetailComponent = (function () {
         }
     };
     //immediate update
+    //used in addition to updateDebounced.
+    //we want to make sure to update immediately in case someone is fast at inputing information
     ProjectsDetailComponent.prototype.updateOnblur = function (e, field) {
         if (!this.hasUpdated) {
             this.hasUpdated = true;
             clearTimeout(this.timer);
-            console.log("SENDING NOW!! " + field.toUpperCase());
+            console.log("SENDING ON BLUR!! " + field.toUpperCase());
         }
     };
+    //used to update on change - generally for dropdowns that really only have 1 change option at a time
     ProjectsDetailComponent.prototype.updateImmediate = function (e, field) {
-        console.log("SENDING NOW!! " + field.toUpperCase());
+        console.log("SENDING IMMEDIATeLY!! " + field.toUpperCase());
     };
     ProjectsDetailComponent = __decorate([
         core_1.Component({
