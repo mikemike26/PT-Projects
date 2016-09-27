@@ -5,7 +5,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
     template: `
        <label [class.selected]="listOpen">{{name}}</label>
        <div class="drop-down-wrapper noselect" [class.selected]="listOpen">
-           <div class="selection" (click)="showMenu()" [class.selected]="listOpen">
+           <div class="selection" tabindex="-1" (click)="showMenu()" (blur)="closeList()" [class.selected]="listOpen">
                <span *ngIf="displayKey !== 'no_selection'">{{items[selectedIndex][displayKey]}}</span>
                <span *ngIf="displayKey === 'no_selection'">{{items[selectedIndex]}}</span>
                <i class="material-icons" *ngIf="!listOpen">&#xE5C5;</i>
@@ -18,7 +18,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
               </li>
            </ul>
        </div>
-       <div class="close-this" [class.hidden]="!listOpen" (click)="closeList()"></div>
     `,
     styles: [`
         :host {
@@ -39,14 +38,6 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
         .drop-down-wrapper.selected {
             z-index: 60;
         }
-        .close-this {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-        }
         label {
             color: #999999;
             font-weight: lighter;
@@ -57,6 +48,9 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
         }
         label.selected {
             color: #3f51b5;
+        }
+        .selection:focus {
+            outline: none;
         }
         .selection.selected {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
