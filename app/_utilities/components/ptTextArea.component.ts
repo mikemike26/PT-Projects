@@ -67,6 +67,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             bottom: 0;
             width: 100%;
             resize: none;
+            overflow: hidden;
         }
         textarea:focus {
             outline: none;

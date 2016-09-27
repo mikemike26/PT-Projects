@@ -38,6 +38,7 @@ import {ProjectsService} from "../projectsServices/projects.service";
             right: 0;
             bottom: 0;
             padding: 1em;
+            overflow: auto;
         }
     `]
 })
