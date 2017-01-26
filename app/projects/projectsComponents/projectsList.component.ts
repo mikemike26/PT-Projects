@@ -8,7 +8,7 @@ import {ProjectsService} from "../projectsServices/projects.service";
 @Component({
     selector: 'projects-list',
     template: `
-      <div class="demo-card-wide mdl-card mdl-shadow--2dp" *ngFor="let project of projects" (click)="selectProject(project)" [class.selected]="selectedId === project.id">
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp" *ngFor="let project of projects" (click)="selectProject(project.id)" [class.selected]="selectedId === project.id">
           <div class="mdl-card__title">
             <h2 class="mdl-card__title-text"><i class="material-icons" *ngIf="project.title.length > 0">&#xE8DF;</i> {{project.title}}</h2>
           </div>
@@ -73,10 +73,10 @@ export class ProjectsListComponent {
         this.projects = this.projectsService.getProjects();
     }
 
-    selectProject(project: Project) {
+    selectProject(projectId: number) {
         this.appNavService.navClose(true);
-        this.selectedId = project.id;
-        this.router.navigate(['/projects', project.id]);
+        this.selectedId = projectId;
+        this.router.navigate(['/projects', projectId]);
     }
 
     ngOnDestroy() {

@@ -32,10 +32,10 @@ var ProjectsListComponent = (function () {
     ProjectsListComponent.prototype.ngOnInit = function () {
         this.projects = this.projectsService.getProjects();
     };
-    ProjectsListComponent.prototype.selectProject = function (project) {
+    ProjectsListComponent.prototype.selectProject = function (projectId) {
         this.appNavService.navClose(true);
-        this.selectedId = project.id;
-        this.router.navigate(['/projects', project.id]);
+        this.selectedId = projectId;
+        this.router.navigate(['/projects', projectId]);
     };
     ProjectsListComponent.prototype.ngOnDestroy = function () {
         // prevent memory leak when component destroyed
@@ -45,7 +45,7 @@ var ProjectsListComponent = (function () {
     ProjectsListComponent = __decorate([
         core_1.Component({
             selector: 'projects-list',
-            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\" (click)=\"selectProject(project)\" [class.selected]=\"selectedId === project.id\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\"><i class=\"material-icons\" *ngIf=\"project.title.length > 0\">&#xE8DF;</i> {{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n      \n      <p *ngIf=\"projects ? projects.length === 0 : false\">There are no projects</p>\n    ",
+            template: "\n      <div class=\"demo-card-wide mdl-card mdl-shadow--2dp\" *ngFor=\"let project of projects\" (click)=\"selectProject(project.id)\" [class.selected]=\"selectedId === project.id\">\n          <div class=\"mdl-card__title\">\n            <h2 class=\"mdl-card__title-text\"><i class=\"material-icons\" *ngIf=\"project.title.length > 0\">&#xE8DF;</i> {{project.title}}</h2>\n          </div>\n          <div class=\"mdl-card__supporting-text\" [ptLimitWords]=\"project.description\" limit=\"20\"></div>\n      </div>\n      \n      <p *ngIf=\"projects ? projects.length === 0 : false\">There are no projects</p>\n    ",
             styles: ["\n        :host {\n            display: block;\n            position: absolute;\n            top: 8.3em;\n            bottom: 0;\n            overflow: auto;\n            padding: 0.7em 1em 1em 0;\n        }\n        .mdl-card {\n            margin-bottom: 1em;\n            min-height: 5em;\n            cursor: pointer;\n        }\n        .mdl-card__title {\n            padding-bottom: 0;\n        }\n        .mdl-card.selected {\n            box-shadow: 5px 6px 9px 0 rgba(0, 0, 0, .5);\n            position: relative;\n            bottom: .5em;\n                \n        }\n        .material-icons {\n            color: #6F6F6F;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [router_1.Router, appNav_service_1.AppNavService, projects_service_1.ProjectsService])

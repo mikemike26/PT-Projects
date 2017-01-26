@@ -19,7 +19,7 @@ var UserData = (function () {
                 id: 0,
                 first: "Mike",
                 last: "Rensel",
-                email: "mike.rensel@mkte.com",
+                email: "mike.rensel@mktec.com",
                 image: "../assets/images/profile-placeholder.png",
                 department: "isg",
                 level: "0"

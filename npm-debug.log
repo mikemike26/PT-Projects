@@ -25,7 +25,7 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid PT-Projects-Client@1.0.0
 16 verbose cwd /Users/mikerensel/Documents/webstorm/PT-Projects-Client
-17 error Darwin 14.5.0
+17 error Darwin 16.0.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
 19 error node v6.0.0
 20 error npm  v3.10.8

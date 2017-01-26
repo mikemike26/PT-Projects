@@ -13,23 +13,23 @@ import {AppNavService} from "../../appServices/appNav.service";
         </div>
         <div class="input-group mdl-grid">
             <pt-text-area class="input mdl-cell mdl-cell--12-col" id="description" name="Description" (keydown)="updateDebounce($event, 'description')" (blur)="updateOnblur($event, 'description')" [(output)]="project.description"></pt-text-area>
-        </div> 
-        
+        </div>
+
         <div class="input-group mdl-grid">
           <pt-drop-down class="mdl-cell mdl-cell--4-col" [options]="status" displayThis="status" name="Status" [(output)]="selectedStatus" (outputChange)="updateImmediate($event, 'status')"></pt-drop-down>
           <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="startDate" name="Start Date" (dateChange)="updateImmediate($event, 'startDate')"></pt-date-picker>
           <pt-date-picker class="mdl-cell mdl-cell--4-col" [(date)]="endDate" name="End Date" (dateChange)="updateImmediate($event, 'endDate')"></pt-date-picker>
         </div>
-        
+
         <div class="input-group mdl-grid">
           <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="users" displayThis="name" name="Owner" [(output)]="selectedUser" (outputChange)="updateImmediate($event, 'owner')"></pt-drop-down>
           <pt-drop-down class="mdl-cell mdl-cell--6-col" [options]="departments" displayThis="name" name="Department" [(output)]="selectedDepartment" (outputChange)="updateImmediate($event, 'department')"></pt-drop-down>
         </div>
-        
+
         <div class="input-group mdl-grid">
           <pt-search-select-multi class="mdl-cell mdl-cell--12-col" [options]="users" name="Members" displayThis="name" [(output)]="selectedMembers" (outputChange)="updateDebounce($event, 'members')" (blur)="updateOnblur($event, 'members')"></pt-search-select-multi>
         </div>
-        
+
       </div>
     `,
     styles: [`
@@ -87,15 +87,15 @@ export class ProjectsDetailComponent {
     departments: any[] = [
         {
             id: 0,
-            name: "isg"
+            name: "tech"
         },
         {
             id: 1,
-            name: "bpc"
+            name: "business"
         },
         {
             id: 2,
-            name: "asg"
+            name: "compliance"
         }
     ];
 
@@ -108,11 +108,11 @@ export class ProjectsDetailComponent {
         },
         {
             id: 1,
-            name: "Michael Woods"
+            name: "Michael Barnes"
         },
         {
             id: 2,
-            name: "Ron Mares"
+            name: "Ron Mantha"
         }
     ];
     //===================================================
