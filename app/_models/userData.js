@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var UserData = (function () {
     function UserData(http) {
         this.http = http;
@@ -19,9 +19,9 @@ var UserData = (function () {
                 id: 0,
                 first: "Mike",
                 last: "Rensel",
-                email: "mike.rensel@mktec.com",
+                email: "mike@yourDomain.com",
                 image: "../assets/images/profile-placeholder.png",
-                department: "isg",
+                department: "tech",
                 level: "0"
             }
         ];
@@ -32,11 +32,11 @@ var UserData = (function () {
             resolve(_this.dummyUser[0]);
         });
     };
-    UserData = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], UserData);
     return UserData;
 }());
+UserData = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], UserData);
 exports.UserData = UserData;
 //# sourceMappingURL=userData.js.map

@@ -12,9 +12,9 @@ export class UserData {
             id: 0,
             first: "Mike",
             last: "Rensel",
-            email: "mike.rensel@mktec.com",
+            email: "mike@yourDomain.com",
             image: "../assets/images/profile-placeholder.png",
-            department: "isg",
+            department: "tech",
             level: "0"
         }
     ];

@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var projects_service_1 = require("../projectsServices/projects.service");
 var appNav_service_1 = require("../../appServices/appNav.service");
 var ProjectsDetailComponent = (function () {
@@ -107,17 +107,15 @@ var ProjectsDetailComponent = (function () {
     ProjectsDetailComponent.prototype.updateImmediate = function (e, field) {
         console.log("SENDING IMMEDIATeLY!! " + field.toUpperCase());
     };
+    ProjectsDetailComponent = __decorate([
+        core_1.Component({
+            selector: 'projects-detail',
+            template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group mdl-grid\">\n            <pt-text-input class=\"input mdl-cell mdl-cell--12-col\" id=\"title\" name=\"Title\" (keydown)=\"updateDebounce($event, 'title')\" (blur)=\"updateOnblur($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n        </div>\n        <div class=\"input-group mdl-grid\">\n            <pt-text-area class=\"input mdl-cell mdl-cell--12-col\" id=\"description\" name=\"Description\" (keydown)=\"updateDebounce($event, 'description')\" (blur)=\"updateOnblur($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div>\n\n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--4-col\" [options]=\"status\" displayThis=\"status\" name=\"Status\" [(output)]=\"selectedStatus\" (outputChange)=\"updateImmediate($event, 'status')\"></pt-drop-down>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"startDate\" name=\"Start Date\" (dateChange)=\"updateImmediate($event, 'startDate')\"></pt-date-picker>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"endDate\" name=\"End Date\" (dateChange)=\"updateImmediate($event, 'endDate')\"></pt-date-picker>\n        </div>\n\n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--6-col\" [options]=\"users\" displayThis=\"name\" name=\"Owner\" [(output)]=\"selectedUser\" (outputChange)=\"updateImmediate($event, 'owner')\"></pt-drop-down>\n          <pt-drop-down class=\"mdl-cell mdl-cell--6-col\" [options]=\"departments\" displayThis=\"name\" name=\"Department\" [(output)]=\"selectedDepartment\" (outputChange)=\"updateImmediate($event, 'department')\"></pt-drop-down>\n        </div>\n\n        <div class=\"input-group mdl-grid\">\n          <pt-search-select-multi class=\"mdl-cell mdl-cell--12-col\" [options]=\"users\" name=\"Members\" displayThis=\"name\" [(output)]=\"selectedMembers\" (outputChange)=\"updateDebounce($event, 'members')\" (blur)=\"updateOnblur($event, 'members')\"></pt-search-select-multi>\n        </div>\n\n      </div>\n    ",
+            styles: ["\n        :host {\n            display: block;\n        }\n        .mdl-grid {\n            padding: 0;\n        }\n        .input-group {\n            width: 100%;\n        }\n        .detail-wrapper {\n            padding: 1em;\n            overflow: visible;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
+        }), 
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, appNav_service_1.AppNavService])
+    ], ProjectsDetailComponent);
     return ProjectsDetailComponent;
 }());
-ProjectsDetailComponent = __decorate([
-    core_1.Component({
-        selector: 'projects-detail',
-        template: "\n      <div class=\"detail-wrapper primary demo-card-wide mdl-card mdl-shadow--2dp\" *ngIf=\"selectedId > -1\">\n        <div class=\"input-group mdl-grid\">\n            <pt-text-input class=\"input mdl-cell mdl-cell--12-col\" id=\"title\" name=\"Title\" (keydown)=\"updateDebounce($event, 'title')\" (blur)=\"updateOnblur($event, 'title')\" [(output)]=\"project.title\"></pt-text-input>\n        </div>\n        <div class=\"input-group mdl-grid\">\n            <pt-text-area class=\"input mdl-cell mdl-cell--12-col\" id=\"description\" name=\"Description\" (keydown)=\"updateDebounce($event, 'description')\" (blur)=\"updateOnblur($event, 'description')\" [(output)]=\"project.description\"></pt-text-area>\n        </div>\n\n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--4-col\" [options]=\"status\" displayThis=\"status\" name=\"Status\" [(output)]=\"selectedStatus\" (outputChange)=\"updateImmediate($event, 'status')\"></pt-drop-down>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"startDate\" name=\"Start Date\" (dateChange)=\"updateImmediate($event, 'startDate')\"></pt-date-picker>\n          <pt-date-picker class=\"mdl-cell mdl-cell--4-col\" [(date)]=\"endDate\" name=\"End Date\" (dateChange)=\"updateImmediate($event, 'endDate')\"></pt-date-picker>\n        </div>\n\n        <div class=\"input-group mdl-grid\">\n          <pt-drop-down class=\"mdl-cell mdl-cell--6-col\" [options]=\"users\" displayThis=\"name\" name=\"Owner\" [(output)]=\"selectedUser\" (outputChange)=\"updateImmediate($event, 'owner')\"></pt-drop-down>\n          <pt-drop-down class=\"mdl-cell mdl-cell--6-col\" [options]=\"departments\" displayThis=\"name\" name=\"Department\" [(output)]=\"selectedDepartment\" (outputChange)=\"updateImmediate($event, 'department')\"></pt-drop-down>\n        </div>\n\n        <div class=\"input-group mdl-grid\">\n          <pt-search-select-multi class=\"mdl-cell mdl-cell--12-col\" [options]=\"users\" name=\"Members\" displayThis=\"name\" [(output)]=\"selectedMembers\" (outputChange)=\"updateDebounce($event, 'members')\" (blur)=\"updateOnblur($event, 'members')\"></pt-search-select-multi>\n        </div>\n\n      </div>\n    ",
-        styles: ["\n        :host {\n            display: block;\n        }\n        .mdl-grid {\n            padding: 0;\n        }\n        .input-group {\n            width: 100%;\n        }\n        .detail-wrapper {\n            padding: 1em;\n            overflow: visible;\n        }\n        .detail-wrapper.primary {\n            width: 100%;\n        }\n        .primary .input {\n            display: block;\n        }\n    "]
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        projects_service_1.ProjectsService,
-        appNav_service_1.AppNavService])
-], ProjectsDetailComponent);
 exports.ProjectsDetailComponent = ProjectsDetailComponent;
 //# sourceMappingURL=projectsDetail.component.js.map
